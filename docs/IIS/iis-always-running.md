@@ -2,14 +2,14 @@
 title: IIS Always Running
 layout: default
 parent: IIS
-nav_order: 2
+nav_order: 1
 ---
 
 {: .highlight }
->啟用 IIS 預先載入的功能，讓 IIS 重啟或者集區回收之後將服務自動起來，而非使用者連線後才啟動服務，避免使用者啟動服務過程感到緩慢體驗不佳。
+>啟用 IIS 預先載入的功能，可以讓 IIS 重啟或者集區回收之後將服務自動起來，而非使用者連線後才啟動服務，避免使用者啟動服務過程感到緩慢體驗不佳。
 
 ## 設定步驟
-IIS 安裝時必須要包括 應用程式初始化
+IIS 安裝時必須要包括「應用程式初始化」
 ![應用程式初始化](images/application-init.png)
 
 ## 應用程式集區的設定
@@ -18,6 +18,7 @@ IIS 安裝時必須要包括 應用程式初始化
 調整為 AlwaysRunning
 - AlwaysRunning : 永遠保持啟動狀態，不會因為沒有使用者存取而關閉。
 - OnDemand：只有當有使用者存取網站時，才會啟動。若時間間隔內一直沒有使用者存取網站，IIS 也會將 Application Pool 關閉。
+<br>
 ![Start Mode](images/start-mode.png)
 
 ### 回收時間間隔
