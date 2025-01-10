@@ -11,3 +11,11 @@ nav_order: 3
 
 ## 應用程式集區回收
 應用程式集區回收指的是將應用程式集區中的應用程式重新載入，這樣可以釋放記憶體，並且重新載入應用程式集區中的應用程式。
+
+
+
+
+![Service Unavailable](images/service-unavailable.png)
+
+
+![Err Connection Refused](images/err-connection-refused.png)
