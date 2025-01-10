@@ -1,5 +1,5 @@
 ---
-title: Application Pool Settings
+title: 應用程式集區設定
 layout: default
 parent: IIS 
 ---
