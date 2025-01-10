@@ -1,1 +1,21 @@
 // custom SCSS (or CSS) goes here
+.side-bar {
+    @include mq(lg) {
+        width: 16.5rem;
+    }
+
+    & + .main {
+        @include mq(lg) {
+            margin-left: 16.5rem
+        }
+
+        .main {
+            margin: auto;
+
+            @include mq(md) {
+                position: relative;
+                max-width: 100%;
+            }
+        }
+    }
+}
