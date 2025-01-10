@@ -1,7 +1,8 @@
 ---
 title: 應用程式集區設定
 layout: default
-parent: IIS 
+parent: IIS
+nav_order: 2
 ---
 ## 進階設定
 
