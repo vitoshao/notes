@@ -19,7 +19,7 @@ tags:
 >1)又稱為靜態工廠模式，一般來說同一工廠內所產生的類別會有一個共同的父類別或介面。<br>
 >2)簡單工廠會依據傳入的參數，回傳不同的物件。使用者取得物件的時候只要傳入正確的參數，不需要去理解這個工廠物件。
 
-![simple-factory-pattern.png](images/simple-factory-pattern.png)
+![simple-factory-pattern.png](simple-factory-pattern.png)
 
 ```cs
 public class Factory
