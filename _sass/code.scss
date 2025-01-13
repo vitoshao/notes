@@ -120,19 +120,20 @@ figure.highlight {
 // remove all space on the second and third level
 // this is a mixin to accommodate for the slightly different structures generated via Markdown vs AsciiDoc
 @mixin scroll-and-spacing($code-div, $pre-select) {
-  #{$code-div} {
-    overflow-x: auto;
-    padding: $sp-3;
-    margin: 0;
-    border: 0;
-  }
+    #{$code-div} {
+        overflow-x: auto;
+        padding: $sp-3;
+        margin: 0;
+        border: 0;
+        line-height: 1rem;
+    }
 
-  #{$pre-select},
-  code {
-    padding: 0;
-    margin: 0;
-    border: 0;
-  }
+    #{$pre-select},
+    code {
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
 }
 
 // for Markdown
