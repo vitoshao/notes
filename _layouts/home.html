@@ -3,7 +3,7 @@ layout: default
 ---
 {% assign pages = site.pages | sort: 'date' | reverse %}
 {% for page in pages %}
-{% if page.nav_exclude == false or page.nav_exclude == nil %}
+{% if page.date != nil %}
 <div>
     <h3><a href="{{site.baseurl}}{{page.url}}">{{page.title}}</a></h3>
     <p>

@@ -28,8 +28,9 @@ node_modules
 *.gem
 .bundle
 .ruby-version
-.vs
-.vscode
-.obsidian
-.github
-.devcontainer
+.vs/
+.vscode/
+.obsidian/
+.github/
+.devcontainer/
+bin/
