@@ -3,6 +3,8 @@ title: Factory Pattern
 layout: default
 parent: C Sharp
 nav_order: 1
+description: "用工廠的概念，實現物件創建的一種模式，而且要處理在不指定對象具體類別的情況下建立對象的問題。"
+date: 2025-01-14
 tags:
   - factory-pattern
   - simple-factory
@@ -11,7 +13,7 @@ tags:
 ---
 
 {: .highlight }
->不管哪一種工廠模式，都是用來管理物件創建的模式。
+>不管哪一種工廠模式，都是用工廠的概念，實現物件創建的一種模式，而且要處理在不指定對象具體類別的情況下建立對象的問題。
 
 ## 簡單工廠模式
 

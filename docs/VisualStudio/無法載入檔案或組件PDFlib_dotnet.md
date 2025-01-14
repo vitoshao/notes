@@ -2,6 +2,8 @@
 title: 無法載入PDFlib_dotnet
 layout: default
 parent: Visual Studio
+description: "建置或發行專案時，產生以下錯誤「無法載入檔案或組件 'PDFlib_dotnet' 或其相依性的其中之一。 試圖載入格式錯誤的程式。」"
+date: 2025-01-10
 ---
 建置或發行專案時，產生以下錯誤「無法載入檔案或組件 'PDFlib_dotnet' 或其相依性的其中之一。 試圖載入格式錯誤的程式。」
 
