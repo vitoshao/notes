@@ -53,6 +53,7 @@ public partial class Experience
 
 ### 多對多關聯
 多對多關聯是指兩個實體之間有多個對應關係，例如一個 `Instructor` 可以有多個 `Course`，而一個 `Course` 也可以有多個 `Instructor`。
+
 ![Ef Relation2](images/ef-relation2.png)
 
 要建立多對多關聯，我們需要建立一個中介表，例如 `CourseInstructor`，它包含 `InstructorId` 和 `CourseId` 兩個外部鍵，分別參考到 `Instructor` 和 `Course` 實體。
@@ -77,6 +78,7 @@ public partial class Instructor
 ```
 
 反向工程不會產生中介表的實體物件，只會在 OnModelCreating 中，建立多對多的關聯性。
+下方程式碼示範如何列出某一教師的所有課程，以及如何列出某一課程的所有教師。
 ```csharp
 // 列出某一教師的所有課程
 Instructor instructor = _dbContext.Instructors.First();
@@ -92,3 +94,7 @@ foreach (var instructor in course.Instructors)
     .WriteLine(instructor.LastName);
 }
 ```
+
+### 序列化的循環參考問題
+
+因為多對多關聯，二個實體物件會互相參考，當我們要序列化實體物件時，可能會遇到循環參考問題。

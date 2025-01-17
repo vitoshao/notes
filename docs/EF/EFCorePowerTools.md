@@ -15,6 +15,7 @@ tags:
 
 在「擴充功能」管理視窗中，搜尋「EF Core Power Tools」，並下載安裝。
 ![Ef Core Power Tools](images/ef-core-power-tools.png)
+![Ef Core Power Tools Settings](images/ef-core-power-tools-settings.png)
 
 ## 使用 EF Core Power Tools 進行反向工程
 

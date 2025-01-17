@@ -3,13 +3,13 @@ layout: default
 ---
 {% assign pages = site.pages | sort: 'date' | reverse %}
 {% for page in pages %}
-{% if page.date != nil %}
+{% if page.date != nil and page.nav_exclude != true %}
 <div>
     <h3><a href="{{site.baseurl}}{{page.url}}">{{page.title}}</a></h3>
     <p>
-        {{page.description}}<span class="text-small">  
-        {{page.date}}</span>
+        {{page.description}} <span class="text-small">{{page.date}}</span><br />
     </p>
+    <hr />
 </div>
 {% endif %}
 {% endfor %}
