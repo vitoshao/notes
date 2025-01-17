@@ -11,19 +11,19 @@ tags:
 
 ### 什麼是 Cascade
 
-Cascade 是一種資料庫操作的串聯行為，當我們更新或刪除父資料表中的對應資料列時，也會更新或刪除參考資料表中的該資料列。 
+Cascade 是一種資料庫操作的串聯行為，當我們更新或刪除父資料表中的對應資料列時，也會更新或刪除參考資料表中與父資料相關聯的資料列。 
 這個功能，可以在 ForeignKey 的設定頁中，將刪除規則設定 Cascade ，這樣當我們刪除主鍵資料時，外鍵資料也會同時自動被刪除。
 
+在 SSMS 中，我們可以透過設定外鍵的刪除規則，來達到 Cascade 的效果。
 ![Cascade Setting](images/cascade-setting.png)
+![Cascade2](images/cascade2.png)
 
-其建立Cascade關聯性的描述如下：
+或者透過 SQL 語法，來設定外鍵的刪除規則。
 ```sql
 ALTER TABLE [dbo].[Experiences]  WITH CHECK ADD  CONSTRAINT [FK_Experiences_Instructor] FOREIGN KEY([InstructorID])
 REFERENCES [dbo].[Instructor] ([ID])
 ON DELETE CASCADE
 ```
-
-![Cascade2](images/cascade2.png)
 
 
 ### EF Core Cascade Delete
@@ -39,7 +39,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         .HasConstraintName("FK_Experiences_Instructor");
 }
 ```
-反向工程建立的模型中，`OnDelete` 行為的 `DeleteBehavior` 預設值是 `ClientSetNull`，我們可以改成 `ClientCascade` ，再利用以下程式碼，即可達到 Cascade Delete 的效果。
+若使用反向工程建立資料庫模型，相依實體的刪除行為預設值是 `ClientSetNull`，我們可以改成 `ClientCascade` ，再利用以下程式碼，即可達到 Cascade Delete 的效果。
 這樣刪除 Instructor 時，連帶的 Experiences 也會同時被刪除。
 
 這裡要注意的是，串聯行為只可以套用至 DbContext 追蹤中的 Entity，所以下方程式碼中，透過 Include 方法，將 Experiences 一併載入，這樣才能達到 Cascade Delete 的效果。

@@ -49,7 +49,7 @@ public partial class Experience
 上述程式碼中，`Instructor` 與 `Office` 是「一對一關聯」，`Instructor` 實體有一個 `Office` 屬性，它是一個 `Office` 實體，代表一個 `Instructor` 只能有一個 `Office`。
 反過來看，`Office` 也有一個 `Instructor` 屬性，這稱為雙向關聯性，一個從相依至主體，另一個從主體反轉為相依。
 
-不過，此處的 `Instructor` 為主體(parent)，`Office` 為相依(child)。所以一個 `Instructor` 不必存在一個 `Office`，但一個 `Office` 則必須存在一個 `Instructor`。
+不過，此處的`Instructor`為主體，`Office` 為相依，所以一個`Instructor`物件，沒有必定要存在一個`Office`；但是存在一個`Office`物件，則必定存在一個`Instructor`。
 
 ### 多對多關聯
 多對多關聯是指兩個實體之間有多個對應關係，例如一個 `Instructor` 可以有多個 `Course`，而一個 `Course` 也可以有多個 `Instructor`。
