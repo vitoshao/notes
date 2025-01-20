@@ -4,6 +4,7 @@ layout: default
 parent: Entity Framework
 description: "EF Core Power Tools 是一個 Visual Studo 的擴充套件，它提供 GUI 畫面，用來建立資料庫模型。"
 date: 2025-01-13
+nav_order: 1
 tags:
   - Entity Framework Power Tools
 ---

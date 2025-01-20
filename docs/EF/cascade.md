@@ -4,6 +4,7 @@ layout: default
 parent: Entity Framework
 description: "Cascade 是一種資料庫操作的串聯行為，當我們更新或刪除父資料表中的對應資料列時，也會更新或刪除參考資料表中的該資料列。"
 date: 2025-01-16
+nav_order: 3
 tags:
   - sql
   - Cascade
@@ -24,7 +25,6 @@ ALTER TABLE [dbo].[Experiences]  WITH CHECK ADD  CONSTRAINT [FK_Experiences_Inst
 REFERENCES [dbo].[Instructor] ([ID])
 ON DELETE CASCADE
 ```
-
 
 ### EF Core Cascade Delete
 EF Core 有支援 Cascade Delete，也就是即使資料庫的外鍵刪除規則沒有設定成 `Cascade`，也可以透過 EF Core 的 Cascade Delete 功能，達到同樣效果。
@@ -51,3 +51,11 @@ Instructor instructor = _dbContext.Instructors
 _dbContext.Instructors.Remove(instructor);
 _dbContext.SaveChanges();
 ```
+
+### 自我參考關聯
+在一個資料表中，可能會有自我參考關聯，也就是資料表中的某個欄位參考到同一資料表中的另一個欄位。
+這種情況下，不允許設定 Cascade Delete。
+![Cascade3](images/cascade3.png)
+
+
+[Introduction to relationships](https://learn.microsoft.com/en-us/ef/core/modeling/relationships)

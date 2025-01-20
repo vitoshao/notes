@@ -4,16 +4,17 @@ layout: default
 parent: Entity Framework
 description: "這篇文件說明 EF Core 的物件模型如何對應到資料庫中關聯性。"
 date: 2025-01-16
+nav_order: 2
 tags:
   - sql
   - ef core
 ---
 
-當我們在資料庫的資料表中建立關聯性時，透過 EF Core Power Tools 反向工程建立資料庫模型，它會將關聯性資料，以參考屬性的模式來呈現。
+當我們在資料庫的資料表中建立關聯性時，透過 EF Core Power Tools 反向工程建立資料庫模型，它會將關聯性資料，以集合型別的參考屬性來呈現。
 如下圖所示，我們有一個 `Instructor` 實體，它有一個關聯的 Office 和 Expreiences 資料。
 ![Ef Relation1](images/ef-relation1.png)
 
-在 `Instructor` 實體中，我們可以看到 `Office` 和 `Experiences` 屬性，這兩個屬性是參考到 `Instructor` 實體的外部鍵。
+在 `Instructor` 實體中，我們可以看到 `Office` 和 `Experiences` 屬性，這兩個屬性都是參考到 `Instructor` 實體的外部鍵。
 ```csharp
 // Principal (parent)
 public partial class Instructor
@@ -42,21 +43,42 @@ public partial class Experience
 }
 ```
 ### 一對多關聯
-在上述程式碼中，`Instructor` 與 `Experience` 是「一對多關聯」，`Instructor` 實體有一個 `Experiences` 屬性，它是一個集合，代表一個 `Instructor` 可以有多個 `Experience`。
+在上述程式碼中，`Instructor` 與 `Experience` 是「一對多關聯」，`Instructor` 實體有一個 `Experiences` 屬性，它是一個`集合`物件，代表一個 `Instructor` 可以有多個 `Experience`。
 
 
 ### 一對一關聯
-上述程式碼中，`Instructor` 與 `Office` 是「一對一關聯」，`Instructor` 實體有一個 `Office` 屬性，它是一個 `Office` 實體，代表一個 `Instructor` 只能有一個 `Office`。
-反過來看，`Office` 也有一個 `Instructor` 屬性，這稱為雙向關聯性，一個從相依至主體，另一個從主體反轉為相依。
+上述程式碼中，`Instructor` 與 `Office` 是「一對一關聯」，`Instructor` 實體有一個 `Office` 屬性，它是一個`實體`物件，代表一個 `Instructor` 只能有一個 `Office`。
+反過來看，`Office` 也有一個 `Instructor` 屬性，這稱為「雙向關聯性」，一個從相依至主體，另一個從主體反轉為相依。
 
-不過，此處的`Instructor`為主體，`Office` 為相依，所以一個`Instructor`物件，沒有必定要存在一個`Office`；但是存在一個`Office`物件，則必定存在一個`Instructor`。
+不過，此處的`Instructor`為主體，`Office` 為相依，所以一個`Instructor`物件，不一定要存在一個`Office`；但是要生成一個`Office`物件，則必定先存在一個`Instructor`。
+```csharp
+var instructor = new Instructor { FirstName = "vito", LastName = "shao" };
+dbContext.Instructors.Add(instructor);
+dbContext.SaveChanges();
+//單純建立 instructor, 可以成功.
+
+var office = new Office { Location = "SouthLake" };
+dbContext.Offices.Add(office);
+dbContext.SaveChanges();
+
+//上面這段程式碼會產生錯誤, The value of 'Office.InstructorID' is unknown
+//因為 EF Core 不知道這個 Office 是屬於哪一個 Instructor
+//可以像下面這樣指定 InstructorId
+
+var office = new Office { Location = "SouthLake" };
+instructor.Office = office;
+dbContext.SaveChanges();
+```
 
 ### 多對多關聯
 多對多關聯是指兩個實體之間有多個對應關係，例如一個 `Instructor` 可以有多個 `Course`，而一個 `Course` 也可以有多個 `Instructor`。
 
 ![Ef Relation2](images/ef-relation2.png)
 
-要建立多對多關聯，我們需要建立一個中介表，例如 `CourseInstructor`，它包含 `InstructorId` 和 `CourseId` 兩個外部鍵，分別參考到 `Instructor` 和 `Course` 實體。
+要建立多對多關聯，我們需要在資料庫中建立一個中介表，例如 `CourseInstructor`，它包含 `InstructorId` 和 `CourseId` 兩個外部鍵，分別參考到 `Instructor` 和 `Course` 實體。
+然後在 EF Core Power 的進階選項中，不要勾選「Use Many to Many Entity」，反向工程就不會產生中介表的實體物件，只會在 OnModelCreating 中，建立多對多的關聯性。
+![Ef Relation3](images/ef-relation3.png)
+
 ```csharp
 public partial class Course
 {
@@ -76,18 +98,16 @@ public partial class Instructor
     public virtual ICollection<Experience> Experiences { get; set; } = new List<Experience>();
 }
 ```
-
-反向工程不會產生中介表的實體物件，只會在 OnModelCreating 中，建立多對多的關聯性。
 下方程式碼示範如何列出某一教師的所有課程，以及如何列出某一課程的所有教師。
 ```csharp
-// 列出某一教師的所有課程
+// 由教師取得所有課程
 Instructor instructor = _dbContext.Instructors.First();
 foreach (var course in instructor.Courses)
 {
     Debug.WriteLine(course.Title);
 }
 
-// 列出某一課程的所有教師
+// 由課程取得所有教師
 Course course = _dbContext.Courses.First();
 foreach (var instructor in course.Instructors)
 {
@@ -95,6 +115,8 @@ foreach (var instructor in course.Instructors)
 }
 ```
 
+
 ### 序列化的循環參考問題
 
 因為多對多關聯，二個實體物件會互相參考，當我們要序列化實體物件時，可能會遇到循環參考問題。
+
