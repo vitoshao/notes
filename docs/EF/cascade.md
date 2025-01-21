@@ -10,7 +10,7 @@ tags:
   - Cascade
 ---
 
-### 什麼是 Cascade
+## 什麼是 Cascade
 
 Cascade 是一種資料庫操作的串聯行為，當我們更新或刪除父資料表中的對應資料列時，也會更新或刪除參考資料表中與父資料相關聯的資料列。 
 這個功能，可以在 ForeignKey 的設定頁中，將刪除規則設定 Cascade ，這樣當我們刪除主鍵資料時，外鍵資料也會同時自動被刪除。
@@ -26,7 +26,7 @@ REFERENCES [dbo].[Instructor] ([ID])
 ON DELETE CASCADE
 ```
 
-### EF Core Cascade Delete
+## EF Core Cascade Delete
 EF Core 有支援 Cascade Delete，也就是即使資料庫的外鍵刪除規則沒有設定成 `Cascade`，也可以透過 EF Core 的 Cascade Delete 功能，達到同樣效果。
 要做到 Cascade Delete 功能，可以透過 Fluent API 來設定。
 ```csharp
@@ -52,10 +52,33 @@ _dbContext.Instructors.Remove(instructor);
 _dbContext.SaveChanges();
 ```
 
-### 自我參考關聯
+## 自我參考關聯
 在一個資料表中，可能會有自我參考關聯，也就是資料表中的某個欄位參考到同一資料表中的另一個欄位。
+
+### 一對多自我參考關聯
 這種情況下，不允許設定 Cascade Delete。
 ![Cascade3](images/cascade3.png)
+
+### 多對多自我參考關聯
+這種情況下，不允許二個 FK 同時設定 Cascade Delete，只允許一個 FK 設定 Cascade Delete。
+而且，當 FK 對應到的那筆資料被刪除時，並不會同時刪除參考資料，只會刪除其關連性。
+![Cascade4](images/cascade4.png)
+
+例如下圖中的資料：
+![Cascade5](images/cascade5.png)
+1. ### 二個 FK 都沒有設定 Cascade Delete
+   此狀況下，當刪除 Id=11 或 Id=12 時，都會因為外部鍵的條件約束而發生錯誤。
+![Cascade6](images/cascade6.png)
+
+2. ### 只有 ParentId 設定 Cascade Delete
+   當刪除 Id=11 時，會刪除成功，同時刪除中介表中的關聯資料。
+   當刪除 Id=12 時，會因為外部鍵的條件約束而發生錯誤。
+![Cascade7](images/cascade7.png)
+
+3. ### 只有 ChildId 設定 Cascade Delete
+   當刪除 Id=11 時，會因為外部鍵的條件約束而發生錯誤。
+   當刪除 Id=12 時，會刪除成功，同時刪除中介表中的關聯資料。
+![Cascade8](images/cascade8.png)
 
 
 [Introduction to relationships](https://learn.microsoft.com/en-us/ef/core/modeling/relationships)

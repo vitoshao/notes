@@ -42,11 +42,10 @@ public partial class Experience
     public virtual Instructor Instructor { get; set; } = null!;
 }
 ```
-### 一對多關聯
+## 一對多關聯
 在上述程式碼中，`Instructor` 與 `Experience` 是「一對多關聯」，`Instructor` 實體有一個 `Experiences` 屬性，它是一個`集合`物件，代表一個 `Instructor` 可以有多個 `Experience`。
 
-
-### 一對一關聯
+## 一對一關聯
 上述程式碼中，`Instructor` 與 `Office` 是「一對一關聯」，`Instructor` 實體有一個 `Office` 屬性，它是一個`實體`物件，代表一個 `Instructor` 只能有一個 `Office`。
 反過來看，`Office` 也有一個 `Instructor` 屬性，這稱為「雙向關聯性」，一個從相依至主體，另一個從主體反轉為相依。
 
@@ -69,8 +68,7 @@ var office = new Office { Location = "SouthLake" };
 instructor.Office = office;
 dbContext.SaveChanges();
 ```
-
-### 多對多關聯
+## 多對多關聯
 多對多關聯是指兩個實體之間有多個對應關係，例如一個 `Instructor` 可以有多個 `Course`，而一個 `Course` 也可以有多個 `Instructor`。
 
 ![Ef Relation2](images/ef-relation2.png)
@@ -116,7 +114,38 @@ foreach (var instructor in course.Instructors)
 ```
 
 
-### 序列化的循環參考問題
+## 序列化的循環參考問題
 
 因為多對多關聯，二個實體物件會互相參考，當我們要序列化實體物件時，可能會遇到循環參考問題。
 
+## 自我參考關聯
+
+在一個資料表中，可能會有自我參考關聯，也就是資料表中的某個欄位參考到同一資料表中的另一個欄位。
+
+### 一對多自我參考關聯
+![Ef Relation4](images/ef-relation4.png)
+```csharp
+public partial class Organization
+{
+    public int Id { get; set; }
+    public string OrgName { get; set; }
+    public int? ParentId { get; set; }
+    public virtual ICollection<Organization> InverseParent { get; set; } = new List<Organization>();
+    public virtual Organization Parent { get; set; }
+}
+```
+
+### 多對多自我參考關聯
+![Ef Relation5](images/ef-relation5.png)
+```csharp
+public partial class Person
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public virtual ICollection<Person> Children { get; set; } = new List<Person>();
+    public virtual ICollection<Person> Parents { get; set; } = new List<Person>();
+}
+```
+
+
+[Introduction to relationships](https://learn.microsoft.com/en-us/ef/core/modeling/relationships)
