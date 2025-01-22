@@ -11,10 +11,11 @@ tags:
 ---
 
 當我們在資料庫的資料表中建立關聯性時，透過 EF Core Power Tools 反向工程建立資料庫模型，它會將關聯性資料，以集合型別的參考屬性來呈現。
-如下圖所示，我們有一個 `Instructor` 實體，它有一個關聯的 Office 和 Expreiences 資料。
+
+下方資料關聯圖中，我們有一個 `Instructor` 實體，它有一個關聯的 Office 和 Expreiences 資料。
 ![Ef Relation1](images/ef-relation1.png)
 
-在 `Instructor` 實體中，我們可以看到 `Office` 和 `Experiences` 屬性，這兩個屬性都是參考到 `Instructor` 實體的外部鍵。
+透過反向工程建立的資料庫模型，在 `Instructor` 實體中，我們可以看到 `Office` 和 `Experiences` 屬性，這兩個屬性都是參考到 `Instructor` 實體的外部鍵。
 ```csharp
 // Principal (parent)
 public partial class Instructor
@@ -44,9 +45,12 @@ public partial class Experience
 ```
 ## 一對多關聯
 在上述程式碼中，`Instructor` 與 `Experience` 是「一對多關聯」，`Instructor` 實體有一個 `Experiences` 屬性，它是一個`集合`物件，代表一個 `Instructor` 可以有多個 `Experience`。
+這種屬性稱為<a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/modeling/relationships/navigations#collection-navigations">集合導覽屬性</a>，它是一個集合物件，可以存放多個相關聯的實體物件。
 
 ## 一對一關聯
 上述程式碼中，`Instructor` 與 `Office` 是「一對一關聯」，`Instructor` 實體有一個 `Office` 屬性，它是一個`實體`物件，代表一個 `Instructor` 只能有一個 `Office`。
+這種屬性稱為<a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/modeling/relationships/navigations#reference-navigations">參考導覽屬性</a>，它是一個實體物件，可以存放一個相關聯的實體物件。
+
 反過來看，`Office` 也有一個 `Instructor` 屬性，這稱為「雙向關聯性」，一個從相依至主體，另一個從主體反轉為相依。
 
 不過，此處的`Instructor`為主體，`Office` 為相依，所以一個`Instructor`物件，不一定要存在一個`Office`；但是要生成一個`Office`物件，則必定先存在一個`Instructor`。

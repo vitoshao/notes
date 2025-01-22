@@ -4,6 +4,7 @@ layout: default
 parent: Entity Framework
 description: "EF Core 提供三種 Loading Policy，分別是 Lazy Loading、Eager Loading 與 Explicit Loading。"
 date: 2025-01-21
+nav_order: 3
 tags:
   - Lazy Loading
   - Eager Loading
