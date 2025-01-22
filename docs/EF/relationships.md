@@ -147,5 +147,5 @@ public partial class Person
 }
 ```
 
-
-[Introduction to relationships](https://learn.microsoft.com/en-us/ef/core/modeling/relationships)
+## 參考資料
+- <a target="_blank" href="Introduction to relationships">https://learn.microsoft.com/en-us/ef/core/modeling/relationships</a>

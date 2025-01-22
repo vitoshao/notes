@@ -71,12 +71,12 @@ _dbContext.SaveChanges();
 ![Cascade6](images/cascade6.png)
 
 2. ### 只有 ParentId 設定 Cascade Delete
-   當刪除 Id=11 時，會刪除成功，同時刪除中介表中的關聯資料。
+   當刪除 Id=11 時，會刪除成功，同時刪除中介表中的關聯資料。<br>
    當刪除 Id=12 時，會因為外部鍵的條件約束而發生錯誤。
 ![Cascade7](images/cascade7.png)
 
 3. ### 只有 ChildId 設定 Cascade Delete
-   當刪除 Id=11 時，會因為外部鍵的條件約束而發生錯誤。
+   當刪除 Id=11 時，會因為外部鍵的條件約束而發生錯誤。<br>
    當刪除 Id=12 時，會刪除成功，同時刪除中介表中的關聯資料。
 ![Cascade8](images/cascade8.png)
 
