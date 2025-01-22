@@ -16,13 +16,21 @@ tags:
 
 在「擴充功能」管理視窗中，搜尋「EF Core Power Tools」，並下載安裝。
 ![Ef Core Power Tools](images/ef-core-power-tools.png)
-![Ef Core Power Tools Settings](images/ef-core-power-tools-settings.png)
 
 ## 使用 EF Core Power Tools 進行反向工程
 
 安裝完成後, 
 在專案選單中，透過 Reverse Engineer 的功能，就可以輕易產出 DBContext 與 EntityType 的資料庫模型。
 ![Reverse Engineer](images/reverse-engineer.png)
+![Ef Core Power Tools Settings](images/ef-core-power-tools-settings.png)
+
+- Pluralize or singularize ：
+  這個選項會將集合導覽屬性以複數形式命名，例如 `Company` 實體的 `Branch` 屬性，會被命名為 `Branches`。
+  同時將資料表名稱以單數形式命名，例如 `Users` 資料表，會被命名為 `User`。
+- Use table and column name directly：
+  這個選項會直接使用資料表與欄位名稱來產生實體或屬性的名稱。
+  若沒有勾選，則會使用常用的程式碼慣例來命名。例如 `user_id` 欄位會被命名為 `UserId`。`ID` 欄位會被命名為 `Id`。
+  
 
 ## 自訂反向工程範本
 
