@@ -40,7 +40,11 @@ tags:
 - [Entity Framework Core 中的 Nullable Reference Types](https://docs.microsoft.com/en-us/ef/core/miscellaneous/nullable-reference-types)
 - [Required and optional properties](https://learn.microsoft.com/en-us/ef/core/modeling/entity-properties?tabs=data-annotations%2Cwithout-nrt#required-and-optional-properties)
 
+---
+
 例如：若資料庫中有個 `Instructor` 資料表，含有四個欄位：`Id`, `FirstName`, `LastName`, `HireDate`，其由只有 `LastName` 欄位允許 NULL。
+
+![Instructor Table](images/instructor-talbe.png)
 
 ### 未啟用 Nullable Reference Types 功能
 在建立這個 Entity 型別時，若沒有啟用 Nullable Reference Types 功能，EF Core 會將 `LastName` 欄位視為可為 NULL 的屬性，所以執行 Model.IsValid 時，不會檢查這個屬性是否有值，只會檢查標註了 `[Required]` 屬性的屬性是否有值。
