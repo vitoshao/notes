@@ -72,11 +72,16 @@ public partial class Instructor  //Entity 型別
 所以在執行 Model.IsValid 時，也會檢查 LastName 屬性是否有值。
 ![Ef Core Nullable Enable](images/ef-core-nullable-enable.png)
 
+#### 啟用 NRT 功能，明確標註可為 NULL 的屬性
+
 使用 EF Core Power Tools 進行反向工程時，若有勾選啟用 Nullable Reference Types 功能，EF Core Power Tools 會自動為 Entity 型別的屬性加上 `!` 或 `?` 符號，來表示是否允許 NULL。
 
 ![Ef Core Tools Nullable Enable](images/ef-core-tools-nullable-enable.png)
 
-屬性有加上 `?` 符號，才表示允許 NULL。
+Entity 型別中：
+- 型別後面有加上 `?` 符號，才表示允許 NULL。
+- 型別後面沒有加上 `?` 符號的話，即使屬性沒有標註 `[Required]` 屬性， EF Core 就會將其視為必填的屬性。
+
 ```csharp
 public partial class Instructor  //Entity 型別
 {
@@ -90,3 +95,20 @@ public partial class Instructor  //Entity 型別
 }
 ```
 ![Ef Core Tools Validate](images/ef-core-tools-validate.png)
+
+啟用 NRT 功能後，不允許 NULL 的屬性，都要給預設值，若沒有給值，編譯器會發出警告。
+- 若為實值型別：因為實值型別都有預設值，所以不需要額外給預設值。
+- 若為參考型別：可以加上 `!` 符號，表示這個屬性不會是 NULL。或者 new 一個空集合當做預設值。
+```csharp
+public partial class Person
+{
+    public int Id { get; set; }
+
+    public string FirstName { get; set; } = null!;
+
+    public virtual ICollection<Person> Children { get; set; } = new List<Person>();
+
+    public virtual ICollection<Person> Parents { get; set; } = []; // [] 等同於 new List<Person>()
+}
+}
+```
