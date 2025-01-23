@@ -72,7 +72,7 @@ public partial class Instructor  //Entity 型別
 所以在執行 Model.IsValid 時，也會檢查 LastName 屬性是否有值。
 ![Ef Core Nullable Enable](images/ef-core-nullable-enable.png)
 
-#### 啟用 NRT 功能，明確標註可為 NULL 的屬性
+### 啟用 NRT 功能，明確標註可為 NULL 的屬性
 
 使用 EF Core Power Tools 進行反向工程時，若有勾選啟用 Nullable Reference Types 功能，EF Core Power Tools 會自動為 Entity 型別的屬性加上 `!` 或 `?` 符號，來表示是否允許 NULL。
 
@@ -109,6 +109,5 @@ public partial class Person
     public virtual ICollection<Person> Children { get; set; } = new List<Person>();
 
     public virtual ICollection<Person> Parents { get; set; } = []; // [] 等同於 new List<Person>()
-}
 }
 ```
