@@ -16,10 +16,14 @@ tags:
 
 ## 未啟用可為 NULL 參考型別
 
-下面這段程式碼，`Office` 屬性是一個參考型別，但沒有初始化，所以預設值是 null。
-因為未啟用「可為 NULL 參考型別」，所以在設計階段，編譯器不會檢查是否有可能產生 NullReferenceException。
+下面這段程式碼，`Office` 屬性是一個參考型別，因為未啟用「可為 NULL 參考型別」，也沒有初始化，所以預設值是 null。
+在此情境的設計階段，編譯器不會檢查程式是否有可能產生 NullReferenceException。
 
 ![Null Disable](images/null-disable.png)
+
+必須等到執行時期，當程式執行到 `Office` 屬性時，才會發生 NullReferenceException。
+
+![Null Disable Error](images/null-disable-error.png)
 
 ## 啟用可為 NULL 參考型別
 
@@ -68,8 +72,10 @@ public partial class Instructor  //Entity 型別
 - Id 欄位，因屬性名稱為 Id 或 \<type name\>Id 會因自動視為 Entity 的 Key，所以不需要標註 `[Required]` 屬性。
 
 ### 啟用 Nullable Reference Types 功能
+
 但是，若啟用了 Nullable Reference Types 功能，只要沒有明確標註屬性可為 NULL 的話，EF Core 就會將其視為必填的屬性。
 所以在執行 Model.IsValid 時，也會檢查 LastName 屬性是否有值。
+
 ![Ef Core Nullable Enable](images/ef-core-nullable-enable.png)
 
 ### 啟用 NRT 功能，明確標註可為 NULL 的屬性
@@ -97,17 +103,10 @@ public partial class Instructor  //Entity 型別
 ![Ef Core Tools Validate](images/ef-core-tools-validate.png)
 
 啟用 NRT 功能後，不允許 NULL 的屬性，都要給預設值，若沒有給值，編譯器會發出警告。
+
+![Null Warning](images/null-warning.png)
+
 - 若為實值型別：因為實值型別都有預設值，所以不需要額外給預設值。
 - 若為參考型別：可以加上 `!` 符號，表示這個屬性不會是 NULL。或者 new 一個空集合當做預設值。
-```csharp
-public partial class Person
-{
-    public int Id { get; set; }
 
-    public string FirstName { get; set; } = null!;
-
-    public virtual ICollection<Person> Children { get; set; } = new List<Person>();
-
-    public virtual ICollection<Person> Parents { get; set; } = []; // [] 等同於 new List<Person>()
-}
-```
+![Null Warning Fix](images/null-warning-fix.png)
