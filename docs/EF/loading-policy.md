@@ -2,7 +2,7 @@
 title: EF Loading Policy
 layout: default
 parent: Entity Framework
-description: "EF Core 提供三種 Loading Policy，分別是 Lazy Loading、Eager Loading 與 Explicit Loading。"
+description: "EF Core 提供三種 Loading Policy，讓您在模型中使用導覽屬性來載入相關實體，分別是 `Lazy Loading`、`Eager Loading` 與 `Explicit Loading`。"
 date: 2025-01-21
 nav_order: 3
 tags:
@@ -14,7 +14,7 @@ tags:
 
 使用 Entity Framework，最方便的事情就是可以直接透過 `導覽屬性` 來存取相關聯的資料，但使用上，若沒弄清楚做法，反而可能導致資料庫查詢的效能問題。
 
-EF Core 提供三種 Loading Policy，分別是 `Lazy Loading`、`Eager Loading` 與 `Explicit Loading`。
+EF Core 提供三種 Loading Policy，讓您在模型中使用導覽屬性來載入相關實體，分別是 `Lazy Loading`、`Eager Loading` 與 `Explicit Loading`。
 
 在 EF6 以前，預設的 Loading Policy 是 Lazy Loading，也就是說，當導覽屬性第一次被存取時，才自動載入關聯資料。
 但從 EF Core 開始，預設的 Loading Policy 是 Eager Loading，所以，若要透過導覽屬性存取關聯的資料，這些關聯資料都必需事先明確指定載入。

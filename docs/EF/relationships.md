@@ -2,7 +2,7 @@
 title: Relationships
 layout: default
 parent: Entity Framework
-description: "這篇文件說明 EF Core 的物件模型如何對應到資料庫中關聯性。"
+description: "這篇文件說明 EF Core 的物件模型如何對應到資料庫中 `一對一` 、 `一對多` 、 `多對多` 關聯性。"
 date: 2025-01-16
 nav_order: 2
 tags:
