@@ -19,7 +19,8 @@ tags:
 - [引用程式碼](#引用程式碼)
 - [表格](#表格)
 - [內嵌 html 語法](#內嵌-html-語法)
-
+- [註解](#註解)
+- 
 ## 文字與段落
 
 這是一段文字，可以使用 `**` 或 `__` 來加粗，例如：**這是加粗的文字**。__這也是是加粗的文字__	
@@ -95,7 +96,7 @@ tags:
 - [Loading Related Data](https://learn.microsoft.com/en-us/ef/core/querying/related-data/)
 - <a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/querying/related-data/">Loading Related Data</a>
 
-![Sample](images/sample.jpg =x250)
+![Sample](images/sample.jpg)
 
 ## 引用程式碼
 ```csharp
@@ -127,3 +128,25 @@ public class Teacher
 <div style="background-color: red">
     這是一段帶有紅色背景的區塊。
 </div>
+
+## 註解
+
+>這是一段註解。
+>還是同一段註解。
+
+>這是另一段註解。一樣使用 `空行` 來分隔。
+
+{: .note }
+>這是一段有特殊樣式的註解，可以用來強調重點。
+
+{: .warning }
+>這是一段有特殊樣式的註解，可以用來警告使用者。
+
+{: .tip }
+>這是一段有特殊樣式的註解，可以用來提供提示。
+
+{: .important }
+＞這是一段有特殊樣式的註解，可以用來強調重要性。
+
+{: .callout }
+？這是一段有特殊樣式的註解，可以用來提供資訊。
