@@ -54,7 +54,7 @@ tags:
 - [Loading Related Data](https://learn.microsoft.com/en-us/ef/core/querying/related-data/)
 - <a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/querying/related-data/">Loading Related Data</a>
 
-![Sample](images/sample.jpg =x250)
+![Sample](images/sample.jpg)
 
 ## 引用程式碼
 ```csharp
