@@ -10,9 +10,10 @@ tags:
   - C# 8
 ---
 
-早先，參考型別（reference types）的變數，預設允許 null ？也就是如果沒有給值，其預設值就是 null。這樣的設計，當一個參考型別變數值為 null 時，若直接使用就會導致 NullReferenceException。
+早先，參考型別（reference types）的變數，預設允許 null ，也就是在初始化之前，其預設值就是 null。
+因為這個原故，程式在設計時，就時常要去判斷變數是否為 null ，若有沒注意到的地方，有時候就會在執行階段發生 NullReferenceException。
 
-為了解決這個問題，C# 8 新導入了「可為 NULL 參考型別」（nullable reference types）的概念，它用來明確定義一個參考型別是否允許 null，幫助開發者在設計階段就發現潛在的 NullReferenceException 問題。
+為了解決這個問題，C# 8 新導入了「可為 NULL 參考型別」（nullable reference types）的概念，它用來定義一個參考型別，必須明確標註是否允許 null，幫助開發者在設計階段就發現潛在的 NullReferenceException 問題。
 
 ## 未啟用可為 NULL 參考型別
 
@@ -29,7 +30,8 @@ tags:
 
 在 C# 8 中，可以透過在檔案的最上方或需要啟用新語法的地方加上 `#nullable enable` 來啟用「可為 NULL 參考型別」。
 下面這段程式碼，因為已經啟用「可為 NULL 參考型別」，所以在宣告屬性時，就必須明確標註是否允許 NULL。
-這樣的改變，讓編譯器在設計階段，就可以檢查出是否有可能產生 NullReferenceException。
+標註方法和實值型別一樣，在型別後面加上 `?` 符號，表示允許 NULL。
+這樣的改變，讓編譯器在設計階段，就可以檢查出是否有可能潛在 NullReferenceException 問題。
 
 ![Null Enable](images/null-enable.png)
 
