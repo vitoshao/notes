@@ -78,7 +78,6 @@ _dbContext.SaveChanges();
 - 當刪除 Id=12 時，會因為外部鍵的條件約束而發生錯誤。
 - 當刪除 Id=11 時，會刪除成功。<br>
   要注意的是，刪除 Id=11 時，只會刪除 Id=11 的資料，不會刪除 Id=12 的資料，它只會同時刪除中介表中的設定資料。
-
 ![Cascade7](images/cascade7.png)
 
 3. ### 只有 ChildId 設定 Cascade Delete

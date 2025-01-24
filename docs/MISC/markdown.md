@@ -43,11 +43,19 @@ tags:
 - 項目 1
 - 項目 2
 - 項目 3
+  - 項目 3-1 
+  - 項目 3-2 
 
 ### 有序列表
 1. 項目 1
-2. 項目 2
-3. 項目 3
+1. 項目 2
+1. 項目 3
+
+項目接續
+
+{:style="counter-reset:none"}
+1. 項目 4
+1. 項目 5
 
 ## 連結與圖片
 
@@ -99,35 +107,63 @@ public class Teacher
 ### 有樣式的註解
 
 {: .note}
->這是一段有特殊樣式的註解，可以用來強調重點。
+>這是一段有特殊樣式的註解，可以用來`強調重點`。
 
 {: .warning}
->這是一段有特殊樣式的註解，可以用來警告使用者。
+>這是一段有特殊樣式的註解，可以用來`警告使用者`。
 
 {: .important}
->這是一段有特殊樣式的註解，可以用來強調重要性。
+>這是一段有特殊樣式的註解，可以用來`強調重要性`。
 
 {: .highlight}
->這是一段有特殊樣式的註解，沒有TITLE
+>這是一段有特殊樣式的註解，沒有`TITLE`
 
 ### 自訂標題的註解
 
 {: .note-title}
 >My Note
 >
->這是一段有特殊樣式的註解，可以用來強調重點。
+>這是一段有特殊樣式的註解，可以用來`強調重點`。
 
 {: .warning-title}
 >My Warning
 >
->這是一段有特殊樣式的註解，可以用來警告使用者。
+>這是一段有特殊樣式的註解，可以用來`警告使用者`。
 
 {: .important-title}
 >My Important
 >
->這是一段有特殊樣式的註解，可以用來強調重要性。
+>這是一段有特殊樣式的註解，可以用來`強調重要性`。
 
 {: .highlight-title}
 >My Heighligh
 >
->這是一段有特殊樣式的註解，沒有TITLE
+>這是一段有特殊樣式的註解，沒有`TITLE`
+
+## Definition lists 
+
+<dl>
+<dt>Name</dt>
+<dd>Godzilla</dd>
+<dt>Born</dt>
+<dd>1952</dd>
+<dt>Birthplace</dt>
+<dd>Japan</dd>
+<dt>Color</dt>
+<dd>Green</dd>
+</dl>
+
+## Collapsed Section
+
+使用 [`<details>`](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections) 標籤，可以建立折疊區塊。
+
+<details markdown="block">
+<summary>Shopping list (click me!)</summary>
+
+This is content inside a `<details>` dropdown.
+
+- [x] Apples
+- [ ] Oranges
+- [ ] Milk
+
+</details>
