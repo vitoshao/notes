@@ -15,7 +15,8 @@ tags:
 使用擴充套件 Markdown Editor v2 for Visual Studio，安裝完成之後就可以在 Visual Studio 中撰寫 markdown 文件。
 ![Markdown Editor](images/Markdown-Editor.png)
 
-以下是一些常用的 Markdown 語法，此文的原始 Markdown 文件在此 [https://github.com/vitoshao/notes/blob/main/docs/MISC/markdown.md](https://github.com/vitoshao/notes/blob/main/docs/MISC/markdown.md)
+以下是一些常用的 Markdown 語法，本文的 Markdown 內容可在底下連結取得。
+[https://github.com/vitoshao/notes/blob/main/docs/MISC/markdown.md](https://github.com/vitoshao/notes/blob/main/docs/MISC/markdown.md)
 
 ## 目錄
 - [文字與段落](#文字與段落)
@@ -27,7 +28,7 @@ tags:
 - [表格](#表格)
 - [內嵌 html 語法](#內嵌-html-語法)
 - [註解](#註解-callout)
-- [折疊區塊](#Collapsed-Section)
+- [折疊區塊](#collapsed-section)
 
 ## 文字與段落
 
@@ -69,7 +70,13 @@ Markdown 語法建立的連結無法另開新頁籤
 - <a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/querying/related-data/">Loading Related Data</a>
 - <a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/modeling/relationships">Introduction to relationships</a>
 
+Markdown 語法建立的圖片無法更改顯示大小
+
 ![Sample](images/sample.jpg)
+
+若要更改顯示大小，只能使用 html
+
+<image src="images/sample.jpg" width="200" />
 
 ## 引用程式碼
 ```csharp
