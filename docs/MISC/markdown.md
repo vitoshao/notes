@@ -76,7 +76,7 @@ Markdown 語法建立的圖片無法更改顯示大小
 
 若要更改顯示大小，只能使用 html
 
-<image src="images/sample.jpg" width="200" />
+<image src="https://vitoshao.github.io/notes/docs/MISC/images/sample.jpg" width="200" />
 
 ## 引用程式碼
 ```csharp
