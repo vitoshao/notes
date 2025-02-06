@@ -14,7 +14,9 @@ tags:
    
 使用擴充套件 Markdown Editor v2 for Visual Studio，安裝完成之後就可以在 Visual Studio 中撰寫 markdown 文件。
 ![Markdown Editor](images/Markdown-Editor.png)
-以下是一些常用的 Markdown 語法：
+
+以下是一些常用的 Markdown 語法，本文的 Markdown 內容可在底下連結取得。
+[https://github.com/vitoshao/notes/blob/main/docs/MISC/markdown.md](https://github.com/vitoshao/notes/blob/main/docs/MISC/markdown.md)
 
 ## 目錄
 - [文字與段落](#文字與段落)
@@ -26,7 +28,8 @@ tags:
 - [表格](#表格)
 - [內嵌 html 語法](#內嵌-html-語法)
 - [註解](#註解-callout)
-- 
+- [折疊區塊](#collapsed-section)
+
 ## 文字與段落
 
 這是一段文字，可以使用 `**` 或 `__` 來加粗，例如：**這是加粗的文字**。__這也是是加粗的文字__	
@@ -35,7 +38,7 @@ tags:
 
 也可以使用 `*` 或 `_` 來斜體，例如：*這是斜體的文字*。_這也是是斜體的文字_
 
-刪除線可以使用 `~~` 來標記，例如：~~這是刪除線的文字~~
+<span class="text-primary">刪除線</span>可以使用 `~~` 來標記，例如：~~這是刪除線的文字~~
 
 ## 列表
 
@@ -59,10 +62,21 @@ tags:
 
 ## 連結與圖片
 
+Markdown 語法建立的連結無法另開新頁籤
 - [Loading Related Data](https://learn.microsoft.com/en-us/ef/core/querying/related-data/)
+- [Introduction to relationships](https://learn.microsoft.com/en-us/ef/core/modeling/relationships)
+
+若要開新頁籤，只能使用 html 
 - <a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/querying/related-data/">Loading Related Data</a>
+- <a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/modeling/relationships">Introduction to relationships</a>
+
+Markdown 語法建立的圖片無法更改顯示大小
 
 ![Sample](images/sample.jpg)
+
+若要更改顯示大小，只能使用 html
+
+<image src="https://vitoshao.github.io/notes/docs/MISC/images/sample.jpg" width="200" />
 
 ## 引用程式碼
 ```csharp
