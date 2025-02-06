@@ -53,33 +53,39 @@ SC定序是 SQL Server 2012 （11.x）新引進的與增補字集有關的定序
 ### 1. 由原始資料庫，產出資料庫建立的完整腳本
 
 使用 SSMS 建立腳本
+
 ![generate-script](images/generate-script.png)
 
 使用 SSMS 建立腳本時，進階選項中的設定有幾個事項要注意：
 1. General<br>
 Script Collaton：要設定為 False (預設值就為 Fase)<br>
+設成 False，就不會在腳本中產生定序的設定，底下我們會調整腳本，以便建立新的資料庫時，使用新的資料庫定序。
+
 2. Table/View Optionsl<br>
 這裡面的選項，可依實際狀況進行調整，例：<br>
-Full-Text Indexes：預設值就為 Fase，可用到就改為 True。<br>
-Trigger：預設值就為 Fase，可用到可改為 True。<br>
+Full-Text Indexes：預設值就為 Fase，若有用到就改為 True。<br>
+Trigger：預設值就為 Fase，若有用到就改為 True。<br>
 Indexes：預設值就為 True，應該都有用到，就用預設值。<br>
 ![advance-settings](images/advance-options.png)
 
 ### 2. 使用腳本建立新的資料庫
 將上一個步驟中的腳本，可依實際需要進行修改，例如：
-1. 修改資料庫名稱,資料庫檔案名稱
+1. 修改資料庫名稱及資料庫的檔案名稱及位置
 2. 指定資料庫定序<br>
-建立腳本時，我們沒有指定定序，所以在建立新資料庫時，指定我們要的定序。
+建立腳本時，我們沒有指定定序，所以調整腳本，依我們要的定序建立新的資料庫。
+
 ![Adjust Script](images/adjust-script.png)
    
 ### 3. 使用 Export/Import 功能，將原始資料庫中的資料複製到新的資料庫。
-直接匯出/匯入操作會遇到幾個問題:
+直接使用匯出/匯入操作時，通常會遇到幾個問題:
 1. FOREIGN KEY 條件約束(CONSTRAINT)
-2. Identity 欄位值
+2. Identity 欄位值無法匯入
 
 可以透過下列方式解決：
 
-#### 停用全部資料庫內的 FOREIGN KEY 條件約束
+停用全部資料庫內的 FOREIGN KEY 條件約束
+{: .label }
+下面語法，可以停用/啟用資料庫內的 FOREIGN KEY 條件約束(CONSTRAINT)、CHECK 條件約束(CONSTRAINT)
 ```sql
 -- 全部停用：資料庫內的 FOREIGN KEY 條件約束(CONSTRAINT)、CHECK 條件約束(CONSTRAINT)
 USE YFEP_New
@@ -95,10 +101,15 @@ EXEC sp_MSforeachtable @command1="ALTER TABLE ? WITH NOCHECK CHECK CONSTRAINT AL
 GO
 ```
 
-#### 啟用識別插入
-在編輯對應功能中，選擇「啟用識別插入」(Enable identity insert)
+啟用識別插入
+{: .label }
+
+在匯出/匯入的編輯對應功能中，可以選擇「啟用識別插入」(Enable identity insert)，這樣在匯入資料時，就可以保留原始資料庫中的識別值。
+
 ![Mapping Settings](images/mapping-settings.png)
-也可以一次選取多個資料表，一起設定啟用識別插入
+
+也可以同時選取多個資料表，一次設定啟用識別插入
+
 ![Mapping Settings Multi](images/mapping-settings-multi.png)
 
 在我的情況下，做完上述步驟，就可以成功將原始資料庫的資料匯出/匯入到新的資料庫中，這樣就得到一個和原先一樣內容的資料庫，但定序已經變成新的定序。
