@@ -77,7 +77,7 @@ ALTER TABLE Student ALTER COLUMN FirstName nvarchar(50) COLLATE Chinese_Taiwan_S
 使用 SSMS 建立腳本時，進階選項中的有幾個要注意的事項：
 1. General<br>
 Script Collaton：要設定為 False (預設值就為 Fase)<br>
-設成 False，就不會在腳本中產生定序的相關設定，在底下步驟中，我們會再調整腳本，以便建立新的資料庫時，使用我們要的資料庫定序。
+設成 False，就不會在腳本中產生定序的相關設定，在底下步驟中，我們會微調腳本內容，以便建立新的資料庫時，使用我們要的資料庫定序。
 
 2. Table/View Optionsl
 
@@ -147,19 +147,26 @@ GO
 
 轉完之後，記得將原始資料庫改名，並將新的資料庫改回原始資料庫的名稱。
 ```sql
-ALTER DATABASE DEMO SET SINGLE_USER WITH NO_WAIT
+ALTER DATABASE YFEP SET SINGLE_USER WITH NO_WAIT
 GO
-ALTER DATABASE DEMO_NEW SET SINGLE_USER WITH NO_WAIT
-GO
-
-EXEC sp_renamedb 'DEMO' , 'DEMO_OLD' ;
+ALTER DATABASE YFEP_NEW SET SINGLE_USER WITH NO_WAIT
 GO
 
-EXEC sp_renamedb 'DEMO_NEW' , 'DEMO' ;
+EXEC sp_renamedb 'YFEP' , 'YFEP_OLD' ;
 GO
 
-ALTER DATABASE DEMO_OLD SET MULTI_USER WITH NO_WAIT
+EXEC sp_renamedb 'YFEP_NEW' , 'YFEP' ;
 GO
-ALTER DATABASE DEMO SET MULTI_USER WITH NO_WAIT
+
+ALTER DATABASE YFEP_OLD SET MULTI_USER WITH NO_WAIT
+GO
+ALTER DATABASE YFEP SET MULTI_USER WITH NO_WAIT
 GO
 ```
+
+## 參考資料
+- <a target="_blank" href="https://learn.microsoft.com/zh-tw/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver16">定序與 Unicode 支援</a>
+- <a target="_blank" href="https://learn.microsoft.com/zh-tw/sql/relational-databases/collations/set-or-change-the-column-collation?view=sql-server-ver16">設定或變更資料行定序</a>
+- <a target="_blank" href="https://sharedderrick.blogspot.com/2010/09/disableenabletrigger.html">停用(Disable)與啟用(Enable)「觸發程序(Trigger)」</a>
+- <a target="_blank" href="https://sharedderrick.blogspot.com/2017/06/sql-server-disable-foreign-key.html">全部停用 (DISABLE) 資料庫內的 FOREIGN KEY 條件約束(CONSTRAINT)</a>
+- <a target="_blank" href="https://dotblogs.com.tw/jamesfu/2016/12/10/Change_Database_Collate">[SQL][問題處理]如何改變已存在資料庫的定序 ?</a>
