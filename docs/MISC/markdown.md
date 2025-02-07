@@ -42,23 +42,40 @@ tags:
 
 ## 列表
 
-### 無序列表
+### 無序清單
 - 項目 1
 - 項目 2
 - 項目 3
   - 項目 3-1 
   - 項目 3-2 
 
-### 有序列表
+### 有序清單
 1. 項目 1
 1. 項目 2
 1. 項目 3
+
+### 工作清單
+- [ ] 項目 1
+- [ ] 項目 2
+- [x] 項目 3
 
 項目接續
 
 {:style="counter-reset:none"}
 1. 項目 4
 1. 項目 5
+
+### 定義清單
+<dl>
+<dt>Name</dt>
+<dd>Godzilla</dd>
+<dt>Born</dt>
+<dd>1952</dd>
+<dt>Birthplace</dt>
+<dd>Japan</dd>
+<dt>Color</dt>
+<dd>Green</dd>
+</dl>
 
 ## 連結與圖片
 
@@ -154,19 +171,6 @@ public class Teacher
 >
 >這是一段有特殊樣式的註解，沒有`TITLE`
 
-## Definition lists 
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
 ## Collapsed Section
 
 使用 [`<details>`](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections) 標籤，可以建立折疊區塊。
@@ -175,9 +179,28 @@ public class Teacher
 <summary>Shopping list (click me!)</summary>
 
 This is content inside a `<details>` dropdown.
-
 - [x] Apples
 - [ ] Oranges
 - [ ] Milk
-
 </details>
+
+## label
+
+Default label
+{: .label }
+
+Blue label
+{: .label .label-blue }
+
+Stable
+{: .label .label-green }
+
+New release
+{: .label .label-purple }
+
+Coming soon
+{: .label .label-yellow }
+
+Deprecated
+{: .label .label-red }
+

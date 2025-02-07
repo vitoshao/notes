@@ -54,7 +54,7 @@ SC定序是 SQL Server 2012 （11.x）新引進的與增補字集有關的定序
 
 使用 SSMS 建立腳本
 
-![generate-script](images/generate-script.png)
+![Generate Script](images/generate-script.png)
 
 使用 SSMS 建立腳本時，進階選項中的設定有幾個事項要注意：
 1. General<br>
@@ -66,7 +66,7 @@ Script Collaton：要設定為 False (預設值就為 Fase)<br>
 Full-Text Indexes：預設值就為 Fase，若有用到就改為 True。<br>
 Trigger：預設值就為 Fase，若有用到就改為 True。<br>
 Indexes：預設值就為 True，應該都有用到，就用預設值。<br>
-![advance-settings](images/advance-options.png)
+![Advance Settings](images/advance-options.png)
 
 ### 2. 使用腳本建立新的資料庫
 將上一個步驟中的腳本，可依實際需要進行修改，例如：
@@ -112,5 +112,8 @@ GO
 
 ![Mapping Settings Multi](images/mapping-settings-multi.png)
 
+資料複製完成之後，記得啟用 FOREIGN KEY 條件約束。
+
 在我的情況下，做完上述步驟，就可以成功將原始資料庫的資料匯出/匯入到新的資料庫中，這樣就得到一個和原先一樣內容的資料庫，但定序已經變成新的定序。
-資料複製完成之後，記得啟用 FOREIGN KEY 條件約束
+
+![Export Import Success](images/export-import-success.png)
