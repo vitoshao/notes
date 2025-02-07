@@ -22,13 +22,12 @@ Chinese_Taiwan_Stroke：用筆畫進行排序<br>
 Chinese_Taiwan_Bopomofo：用ㄅㄆㄇㄈ進行排序。<br>
 CI：Case Sensitive<br>
 AS：Accent Sensitive<br>
-SC：增補字集<br>
-90：資料庫版本<br>
-
-有些定序和資料庫版本有關，例如含有90的定序就是SQL Server 2005的定序。<br>
+SC：與增補字集相關的定序<br>
+90：與資料庫相關的版本<br>
 
 SC定序是 SQL Server 2012 （11.x）新引進的與增補字集有關的定序。從 SQL Server 2017 (14.x) 開始，所有新的定序都會自動支援增補字元。
 
+有些定序會加上數字用以區別是哪一版本的資料庫開始支援，例如含有90的定序就是SQL Server 2005的定序。<br>
 
 ## 如何變更定序
 
@@ -146,21 +145,24 @@ GO
 
 ![Export Import Success](images/export-import-success.png)
 
-匯出/匯入完成之後，記得將原始資料庫改名，並將新的資料庫改回原始資料庫的名稱，同時記得再啟用 FOREIGN KEY 條件約束。。
+匯出/匯入作業完成之後，記得將原始資料庫改名，並將新的資料庫改回原始資料庫的名稱，同時記得再啟用 FOREIGN KEY 條件約束。。
 
 ```sql
 ALTER DATABASE YFEP SET SINGLE_USER WITH NO_WAIT
-GO
-ALTER DATABASE YFEP_NEW SET SINGLE_USER WITH NO_WAIT
 GO
 
 EXEC sp_renamedb 'YFEP' , 'YFEP_OLD' ;
 GO
 
+ALTER DATABASE YFEP_OLD SET MULTI_USER WITH NO_WAIT
+GO
+
+ALTER DATABASE YFEP_NEW SET SINGLE_USER WITH NO_WAIT
+GO
+
 EXEC sp_renamedb 'YFEP_NEW' , 'YFEP' ;
 GO
 
-ALTER DATABASE YFEP_OLD SET MULTI_USER WITH NO_WAIT
 GO
 ALTER DATABASE YFEP SET MULTI_USER WITH NO_WAIT
 GO
