@@ -3,7 +3,7 @@ title: 如何變更定序 Collations
 layout: default
 parent: Sample
 nav_order: 1
-description: "...。"
+description: "定序是資料庫中用來排序和比較字串的規則，這篇內容記錄如何變更某一個資料庫的定序。"
 date: 2025-02-06
 tags:
   - 定序
@@ -66,15 +66,16 @@ ALTER TABLE Student ALTER COLUMN FirstName nvarchar(50) COLLATE Chinese_Taiwan_S
 
 ## 如何改變整個資料庫的定序
 
-一個已經運行中的資料庫，資料欄位很容易遇到以上不可變更的狀況。底下是一個方法，示範如何將一個資料庫的定序由 Chinese_Taiwan_Stroke_90_CI_AS_SC 變更成 Chinese_Taiwan_Stroke_CI_AS，包含所有文字型態欄位。
+一個已經運行中的資料庫，變更資料庫的定序，並不會同時更改所有資料欄位的定序。
+而更改資料欄位的定序，又很容易遇到以上不可變更的狀況。底下是一個方法，示範如何將一個資料庫的定序由 Chinese_Taiwan_Stroke_90_CI_AS_SC 變更成 Chinese_Taiwan_Stroke_CI_AS，包含所有文字型態欄位。
 
 ### 1. 由原始資料庫，產出資料庫建立的完整腳本
 
-使用 SSMS 建立整個資料庫完整腳本，但不含資料，這樣就可以得到一個包含所有資料表、索引、條件約束、預存程序、檢視等等的腳本。這個腳本可以用來建立一個和原始資料庫一樣結構的新資料庫。
+使用 SSMS 建立整個資料庫的完整腳本，但不含資料，這樣就可以得到一個包含所有資料表、索引、條件約束、預存程序、檢視等等的腳本。這個腳本可以用來建立一個和原始資料庫一樣結構的新資料庫。
 
 ![Generate Script](images/generate-script.png)
 
-使用 SSMS 建立腳本時，進階選項中的有幾個要注意的事項：
+在設定 SSMS 建立腳本的步驟中，進階選項內有幾個選項要注意：
 1. General<br>
 Script Collaton：要設定為 False (預設值就為 Fase)<br>
 設成 False，就不會在腳本中產生定序的相關設定，在底下步驟中，我們會微調腳本內容，以便建立新的資料庫時，使用我們要的資料庫定序。
@@ -91,23 +92,25 @@ Script Collaton：要設定為 False (預設值就為 Fase)<br>
 
 ### 2. 使用腳本建立新的資料庫
 
-將上一個步驟中的腳本，依實際需要進行修改，例如：
+將上一個步驟中產出的資料庫腳本，依實際需要進行修改，例如：
 
 1. 修改資料庫名稱及資料庫的檔案名稱及位置
 2. 指定資料庫定序
 
-建立腳本時，我們沒有指定定序，所以調整腳本，依我們要的定序建立新的資料庫。
+因為前面在建立腳本時，我們設定不出輸定序資訊，所以此時將要使用的定序調整至腳本中。
 
 ![Adjust Script](images/adjust-script.png)
    
+調整完之後，執行腳本，就可以得到一個新的資料庫，這個資料庫和原始資料庫一樣的結構，但定序已經變成新的定序。
+
 ### 3. 使用 Export/Import 功能，將原始資料庫中的資料複製到新的資料庫。
 
-直接使用匯出/匯入操作時，通常會遇到幾個問題:
+接下來在 SSMS 中使用「匯出/匯入」功能，將舊有資料庫的資料，全部匯入新的資料庫，不過這個操作，通常會遇到幾個問題:
 
 1. FOREIGN KEY 條件約束(CONSTRAINT)
 2. Identity 欄位值無法匯入
 
-可以透過下列方式解決：
+這二個問題，可以透過下列方式解決：
 
 停用全部資料庫內的 FOREIGN KEY 條件約束
 {: .label }
@@ -139,13 +142,12 @@ GO
 
 ![Mapping Settings Multi](images/mapping-settings-multi.png)
 
-資料複製完成之後，記得啟用 FOREIGN KEY 條件約束。
-
-在我的情況下，做完上述步驟，就可以成功將原始資料庫的資料匯出/匯入到新的資料庫中，這樣就得到一個和原先一樣內容的資料庫，但定序已經變成新的定序。
+經由上面的設定，在我的情況下，「匯出/匯入」作業應該就可以順利完成，此時就就得到一個內容和結構都和原先資料庫一樣，但定序已經變成新的定序。
 
 ![Export Import Success](images/export-import-success.png)
 
-轉完之後，記得將原始資料庫改名，並將新的資料庫改回原始資料庫的名稱。
+匯出/匯入完成之後，記得將原始資料庫改名，並將新的資料庫改回原始資料庫的名稱，同時記得再啟用 FOREIGN KEY 條件約束。。
+
 ```sql
 ALTER DATABASE YFEP SET SINGLE_USER WITH NO_WAIT
 GO
