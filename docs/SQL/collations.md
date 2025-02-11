@@ -20,10 +20,10 @@ tags:
 
 Chinese_Taiwan_Stroke：用筆畫進行排序<br>
 Chinese_Taiwan_Bopomofo：用ㄅㄆㄇㄈ進行排序。<br>
-CI：Case Sensitive<br>
-AS：Accent Sensitive<br>
+CI/CS：Case Sensitive/InSensitive<br>
+AI/AS：Accent Sensitive/InSensitive<br>
 SC：與增補字集相關的定序<br>
-90：與資料庫相關的版本<br>
+90：與資料庫版本相關的定序<br>
 
 SC定序是 SQL Server 2012 （11.x）新引進的與增補字集有關的定序。從 SQL Server 2017 (14.x) 開始，所有新的定序都會自動支援增補字元。
 
@@ -31,7 +31,7 @@ SC定序是 SQL Server 2012 （11.x）新引進的與增補字集有關的定序
 
 ## 如何變更定序
 
-{: .note}
+{: .important}
 >定序設定可分成伺服器層級、資料庫層級、資料行層級。
 >雖然每個層級的定序都可以變更，但對原本已經建立好的資料，變更上層層級的定序，並不會改變原先下層層級的定序。
 
@@ -55,7 +55,7 @@ GO
 ALTER TABLE Student ALTER COLUMN FirstName nvarchar(50) COLLATE Chinese_Taiwan_Stroke_CS_AS
 ```
 
-{: .highlight}
+{: .warning}
 >雖然欄位的定序可以變更，但 MSDN 上有寫，如果欄位參考了下列任何一個項目的定序，就無法變更其定序：
 >- 計算資料行
 >- 索引
@@ -66,11 +66,13 @@ ALTER TABLE Student ALTER COLUMN FirstName nvarchar(50) COLLATE Chinese_Taiwan_S
 ## 如何改變整個資料庫的定序
 
 一個已經運行中的資料庫，變更資料庫的定序，並不會同時更改所有資料欄位的定序。
-而更改資料欄位的定序，又很容易遇到以上不可變更的狀況。底下是一個方法，示範如何將一個資料庫的定序由 Chinese_Taiwan_Stroke_90_CI_AS_SC 變更成 Chinese_Taiwan_Stroke_CI_AS，包含所有文字型態欄位。
+而更改資料欄位的定序，又很容易遇到以上不可變更的狀況。
+
+若要變更整個資料庫定序，可參考以下做：以新定序建立一個新的資料庫，並將原始資料庫的資料複製到新的資料庫。
 
 ### 1. 由原始資料庫，產出資料庫建立的完整腳本
 
-使用 SSMS 建立整個資料庫的完整腳本，但不含資料，這樣就可以得到一個包含所有資料表、索引、條件約束、預存程序、檢視等等的腳本。這個腳本可以用來建立一個和原始資料庫一樣結構的新資料庫。
+使用 SSMS 建立整個資料庫的完整腳本，但不含資料，這樣就可以得到一個包含所有資料表、索引、條件約束、預存程序、檢視等等的腳本。這個腳本可以用來建立一個和原始資料庫結構一樣的新資料庫。
 
 ![Generate Script](images/generate-script.png)
 
@@ -96,11 +98,11 @@ Script Collaton：要設定為 False (預設值就為 Fase)<br>
 1. 修改資料庫名稱及資料庫的檔案名稱及位置
 2. 指定資料庫定序
 
-因為前面在建立腳本時，我們設定不出輸定序資訊，所以此時將要使用的定序調整至腳本中。
+因為前面在建立腳本時，我們沒有輸出定序資訊，所以此時將要使用的定序加進腳本中。
 
 ![Adjust Script](images/adjust-script.png)
    
-調整完之後，執行腳本，就可以得到一個新的資料庫，這個資料庫和原始資料庫一樣的結構，但定序已經變成新的定序。
+調整完之後，執行腳本，就可以得到一個新的資料庫，這個資料庫和原始資料庫結構一樣，但定序是新的定序。
 
 ### 3. 使用 Export/Import 功能，將原始資料庫中的資料複製到新的資料庫。
 
@@ -141,7 +143,7 @@ GO
 
 ![Mapping Settings Multi](images/mapping-settings-multi.png)
 
-經由上面的設定，在我的情況下，「匯出/匯入」作業應該就可以順利完成，此時就就得到一個內容和結構都和原先資料庫一樣，但定序已經變成新的定序。
+經由上面的設定，若沒其他情況，「匯出/匯入」作業應該就可以順利完成，此時就得到一個內容和結構都和原先資料庫一樣，但定序是新的定序。
 
 ![Export Import Success](images/export-import-success.png)
 
