@@ -2,7 +2,7 @@
 title: Delegate
 layout: default
 parent: C Sharp
-nav_order: 2
+nav_order: 4
 description: "delegate tess"
 date: 2025-01-12
 nav_exclude: true
