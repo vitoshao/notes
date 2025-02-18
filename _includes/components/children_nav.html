@@ -74,7 +74,7 @@
 {%- if nav_children.size >= 1 -%}
 
   {%- if page.child_nav_order == 'desc' or page.child_nav_order == 'reversed' -%}
-    {%- assign nav_children = nav_children | sort: "nav_order" -%}
+    {%- assign nav_children = nav_children | reverse -%}
   {%- endif -%}
 
 <hr>
