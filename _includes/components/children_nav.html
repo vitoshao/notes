@@ -26,20 +26,20 @@
   {%- assign nav_children = nil -%}
 
   {%- capture nav_list_link -%}
-  <a href="{{ page.url | relative_url }}" class="nav-list-link">
-  {%- endcapture -%}
+<a href="{{ page.url | relative_url }}" class="nav-list-link">
+    {%- endcapture -%}
 
-  {%- capture nav_list_simple -%}
-  <ul class="nav-list">
-  {%- endcapture -%}
+    {%- capture nav_list_simple -%}
+    <ul class="nav-list">
+        {%- endcapture -%}
 
-  {%- assign nav_child_start = site_nav
+        {%- assign nav_child_start = site_nav
         | split: nav_list_link | last
         | split: "</a>" | slice: 1 | first -%}
 
-  {%- assign nav_child_test = nav_child_start 
+  {%- assign nav_child_test = nav_child_start
         | remove_first: nav_list_simple | prepend: nav_list_simple -%}
-    
+
   {%- if nav_child_start != nav_child_test -%}
     {%- assign nav_children = "" | split: "" -%}
   {%- endif -%}
@@ -74,17 +74,17 @@
 {%- if nav_children.size >= 1 -%}
 
   {%- if page.child_nav_order == 'desc' or page.child_nav_order == 'reversed' -%}
-    {%- assign nav_children = nav_children | reverse -%}
+    {%- assign nav_children = nav_children | sort: "nav_order" -%}
   {%- endif -%}
 
 <hr>
 {% include toc_heading_custom.html %}
 <ul>
-  {% for nav_child in nav_children %}
-  <li>
-    <a href="{{ nav_child.url | relative_url }}">{{ nav_child.title }}</a>{% if nav_child.summary %} - {{ nav_child.summary }}{% endif %}
-  </li>
-  {% endfor %}
+    {% for nav_child in nav_children %}
+    <li>
+        <a href="{{ nav_child.url | relative_url }}">{{ nav_child.title }}</a>{% if nav_child.summary %} - {{ nav_child.summary }}{% endif %}
+    </li>
+    {% endfor %}
 </ul>
 
 {%- endif -%}
