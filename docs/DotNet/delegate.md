@@ -1,7 +1,7 @@
 ---
 title: Delegate
 layout: default
-parent: C Sharp
+parent: Dot Net
 nav_order: 4
 description: "delegate tess"
 date: 2025-01-12
