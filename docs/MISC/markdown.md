@@ -40,6 +40,14 @@ tags:
 
 <span class="text-primary">刪除線</span>可以使用 `~~` 來標記，例如：~~這是刪除線的文字~~
 
+This is a <sub>subscript</sub> text
+
+This is a <sup>superscript</sup> text
+
+This is an <ins>underlined</ins> text
+
+The background color is `#ffffff` for light mode and `#000000` for dark mode.
+
 ## 列表
 
 ### 無序清單
@@ -170,6 +178,25 @@ public class Teacher
 >My Heighligh
 >
 >這是一段有特殊樣式的註解，沒有`TITLE`
+
+## Alerts
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+
+
 
 ## Collapsed Section
 
