@@ -2,7 +2,6 @@
 title: Sample
 layout: default
 parent: Sample
-nav_order: 6
 description: "...。"
 date: 2025-02-14
 tags:

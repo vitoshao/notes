@@ -4,7 +4,6 @@ layout: default
 parent: Entity Framework
 description: "Cascade 是一種資料庫操作的串聯行為，當我們更新或刪除父資料表中的對應資料列時，也會更新或刪除參考資料表中的該資料列。"
 date: 2025-01-16
-nav_order: 4
 tags:
   - sql
   - Cascade

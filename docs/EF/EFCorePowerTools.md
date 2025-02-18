@@ -4,7 +4,6 @@ layout: default
 parent: Entity Framework
 description: "EF Core Power Tools 是一個 Visual Studo 的擴充套件，它提供 GUI 畫面，用來建立資料庫模型。"
 date: 2025-01-13
-nav_order: 1
 tags:
   - Entity Framework Power Tools
 ---
@@ -27,6 +26,7 @@ tags:
 - Pluralize or singularize ：
   這個選項會將集合導覽屬性以複數形式命名，例如 `Company` 實體的 `Branch` 屬性，會被命名為 `Branches`。
   同時將資料表名稱以單數形式命名，例如 `Users` 資料表，會被命名為 `User`。
+
 - Use table and column name directly：
   這個選項會直接使用資料表與欄位名稱來產生實體或屬性的名稱。
   若沒有勾選，則會使用常用的程式碼慣例來命名。例如 `user_id` 欄位會被命名為 `UserId`。`ID` 欄位會被命名為 `Id`。

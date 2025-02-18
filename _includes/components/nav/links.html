@@ -46,7 +46,7 @@
         </a>
         {%- if nav_children.size >= 1 -%}
         {%- if node.child_nav_order == 'desc' or node.child_nav_order == 'reversed' -%}
-        {%- assign nav_children = nav_children | reverse -%}
+        {%- assign nav_children = nav_children | sort: "date" | reverse -%}
         {%- endif -%}
         {%- assign nav_ancestors = include.ancestors | push: node.title -%}
         {%- include components/nav/links.html pages=nav_children ancestors=nav_ancestors all=include.all -%}

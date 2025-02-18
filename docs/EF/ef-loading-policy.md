@@ -4,7 +4,6 @@ layout: default
 parent: Entity Framework
 description: "EF Core 提供三種 Loading Policy，讓您在模型中使用導覽屬性來載入相關實體，分別是 Lazy Loading、Eager Loading 與 Explicit Loading。"
 date: 2025-01-21
-nav_order: 3
 tags:
   - Lazy Loading
   - Eager Loading

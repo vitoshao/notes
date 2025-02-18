@@ -2,7 +2,6 @@
 title: Nullable Reference Types
 layout: default
 parent: Dot Net
-nav_order: 3
 description: "「可為 NULL 參考型別」是 C# 8 新導入的功能，它用來明確定義：一個參考型別是否允許 null。這個功能可以幫助開發者在設計階段就發現潛在的 NullReferenceException 問題，提高程式碼的品質。"
 date: 2025-01-23
 tags:
