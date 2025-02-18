@@ -80,6 +80,7 @@
 <hr>
 {% include toc_heading_custom.html %}
 <ul>
+    {% assign nav_children = nav_children | sort: 'nav_order' | reverse %}
     {% for nav_child in nav_children %}
     <li>
         <a href="{{ nav_child.url | relative_url }}">{{ nav_child.title }}</a>{% if nav_child.summary %} - {{ nav_child.summary }}{% endif %}
