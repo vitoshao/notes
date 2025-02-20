@@ -1,9 +1,9 @@
 ---
-title: Sample
+title: Authentication and Authorization
 layout: default
-parent: Sample
+parent: Dot Net
 description: "Claims-based 授權"
-date: 2025-02-14
+date: 2025-02-20
 tags:
   - authentication
   - authorization
