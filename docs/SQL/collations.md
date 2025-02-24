@@ -1,7 +1,7 @@
 ---
 title: 如何變更定序 Collations
 layout: default
-parent: Sample
+parent: SQL
 nav_order: 1
 description: "定序是資料庫中用來排序和比較字串的規則，這篇內容記錄如何變更某一個資料庫的定序。"
 date: 2025-02-06
@@ -28,6 +28,26 @@ SC：支援增補字集相關的定序（如 CJK 擴展字元）<br>
 SC定序是 SQL Server 2012 （11.x）新引進的與增補字集有關的定序。從 SQL Server 2017 (14.x) 開始，所有新的定序都會自動支援增補字元。
 
 有些定序會加上`數字`用以區別是哪一版本的資料庫開始支援，例如含有90的定序，就是SQL Server 2005（9.0）版本的排序規則。<br>
+
+查詢物件的定序
+```sql
+--取得 SERVER 的預設定序
+SELECT CONVERT (varchar, SERVERPROPERTY('collation'))
+
+--取得 DATABASE 的定序
+SELECT CONVERT (varchar, DATABASEPROPERTYEX('YFEP','collation'))
+
+--取得 TABLE 中每個欄位的定序
+SELECT
+	t.name, c.name, c.collation_name 
+FROM sys.columns c 
+	INNER JOIN sys.tables t ON t.object_id = c.object_id
+WHERE c.object_id
+      IN (SELECT object_id FROM sys.objects WHERE type = 'U')
+      AND c.collation_name != 'NULL'
+   And t.name='UserMake'
+ORDER BY t.name, c.name
+```
 
 ## 如何變更定序
 
@@ -169,6 +189,10 @@ GO
 ALTER DATABASE YFEP SET MULTI_USER WITH NO_WAIT
 GO
 ```
+
+以上就是如何變更整個資料庫的定序。
+另外，匯出/匯入作業會增加大量的交易記錄，所以在執行匯出/匯入後，可使用 SHRINKFILE LOG 壓縮目前資料庫的資料或記錄檔大小。
+
 
 ## 參考資料
 - <a target="_blank" href="https://learn.microsoft.com/zh-tw/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver16">定序與 Unicode 支援</a>

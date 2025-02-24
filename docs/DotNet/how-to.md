@@ -29,6 +29,26 @@ public void OnAuthorization(AuthorizationFilterContext filterContext)
 var permission = HttpContext.Items["key"];
 ```
 
+{: .highlight}
+> 在 ClaimsIdentity 中, 於入很多claim , 合適嗎?
+
+沒人可以討論，所以問了 Chatgpt，覺得回達的很不錯。ＸＤ
+
+![ClaimsIdentity](images/claimsidentity.png)
+
+### 結論
+
+如果 ClaimsIdentity 內的 Claim 數量較少且僅存放基本身份資訊，那是合適的。但如果數量龐大，應該考慮其他解決方案，例如透過 Database 或 Caching 來查詢額外資訊，而不是全部塞進 ClaimsIdentity。
+
+
+
+
+
+
+
+
+
+
 
 
 ## 參考資料
