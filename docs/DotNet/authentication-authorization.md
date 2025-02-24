@@ -2,7 +2,7 @@
 title: Authentication and Authorization
 layout: default
 parent: Dot Net
-description: "Claims-based 授權"
+description: "Claims-based 與 Token-Based 授權"
 date: 2025-02-20
 tags:
   - authentication
