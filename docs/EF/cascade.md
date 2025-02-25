@@ -87,4 +87,5 @@ _dbContext.SaveChanges();
 ![Cascade8](images/cascade8.png)
 
 
-[Introduction to relationships](https://learn.microsoft.com/en-us/ef/core/modeling/relationships)
+## 參考資料
+- <a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/modeling/relationships">Introduction to relationships</a>
