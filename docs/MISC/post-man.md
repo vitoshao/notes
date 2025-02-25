@@ -36,5 +36,18 @@ tags:
 例如，這個 Request ，我們在 Auth 頁簽中，指定一個 Bearer Token，同時使用`authToken`這個變數，帶入前一個 Request 儲存下來的 Token 內容。
 ![Post Man Set Token](images/post-man-set-token.png)
 
+### 連續執行多個 Request
+
+Collection 中的 Request 可以連續執行。
+![Post Man Run Collection 1](images/post-man-run-collection-1.png)
+
+連續執行預設會依序列出所有 Request ，你可以調整執行順序，也可以設定每個 Request 的執行間隔時間。
+
+![Post Man Run Collection 2](images/post-man-run-collection-2.png)
+
+執行結果會顯示在右邊的視窗中。
+
+![Post Man Run Collection 3](images/post-man-run-collection-3.png)
+
 ## 參考資料
 - <a target="_blank" href="https://www.youtube.com/watch?v=xBwCgobT6k0&t=27s&ab_channel=ITsLifeOverAll">使用 Postman 進行 API 測試</a>
