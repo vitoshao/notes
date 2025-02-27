@@ -38,7 +38,8 @@ tags:
 
 ### 連續執行多個 Request
 
-Collection 中的 Request 可以連續執行。
+透過 Collection 中的 Run Collection，可以連續執行多個 Request 。
+
 ![Post Man Run Collection 1](images/post-man-run-collection-1.png)
 
 連續執行預設會依序列出所有 Request ，你可以調整執行順序，也可以設定每個 Request 的執行間隔時間。

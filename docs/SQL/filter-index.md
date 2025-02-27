@@ -58,4 +58,4 @@ END
  ```
 
 ## 參考資料
-- <a target="_blank" href="建立篩選索引">https://learn.microsoft.com/en-us/sql/relational-databases/indexes/create-filtered-indexes?view=sql-server-ver16&redirectedfrom=MSDN</a>
+- <a target="_blank" href="https://learn.microsoft.com/en-us/sql/relational-databases/indexes/create-filtered-indexes?view=sql-server-ver16&redirectedfrom=MSDN">建立篩選索引</a>
