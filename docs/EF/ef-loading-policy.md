@@ -21,7 +21,7 @@ EF Core 提供三種 Loading Policy，讓您在模型中使用導覽屬性來載
 
 ## 積極載入 (Eager Loading)
 
-積極載入是指在查詢時，使用 <a target="_blank" href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include?view=efcore-9.0">Include</a> 方法，明確指定要載入的關聯資料，這樣就可以一次查詢出所有相關聯的資料，避免多次查詢資料庫。
+積極載入是 EF Core 預設的 Loading Policy，查詢時，若要同時載入相關聯的資料，必需使用 <a target="_blank" href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include?view=efcore-9.0">Include</a> 方法明確指定，這樣就可以一次查詢出所有相關聯的資料，避免多次查詢資料庫。
 
 使用 `include` 方法，可以在單一查詢戴入一個或多個關聯資料
 ```csharp
@@ -100,17 +100,27 @@ EF Core 提供三種 Loading Policy，讓您在模型中使用導覽屬性來載
 
 ## 消極載入 (Lazy Loading)
 
-消極載入是指當導覽屬性被存取時，才自動載入關聯資料，這樣可以避免一次查詢出所有相關聯的資料，但是若使用不當，可能會導致 N+1 問題。
+消極載入是指當導覽屬性被存取時，才自動載入關聯資料，這樣可以避免一次查詢出所有相關聯的資料。但是若使用不當，可能會導致 N+1 問題。
 
 ```csharp
-var blog = context.Blogs.Single(b => b.BlogId == 1);
-var posts = blog.Posts;
+var companies = _companyRepository.FetchAll()
+    .Where(x => x.Id > 100)
+    .Take(5);
+
+foreach (var company in companies)
+{
+    foreach (var branch in company.Branches)
+    {
+        Debug.WriteLine($"Branch: {branch.CName}");
+    }
+}
 ```
+這個範例會載入 Company 資料，然後在需要時才載入 Branch 資料。
 
 ### 設定使用 Lazy Policy
 
-在 EF Core 中，如果要使用 Lazy Loading，必須先啟用它。
-設定時，心須先安裝 `Microsoft.EntityFrameworkCore.Proxies` 套件，並在 DbContext 中啟用 Lazy Loading。
+在 EF Core 中，如果要使用 Lazy Loading，心須先安裝 `Microsoft.EntityFrameworkCore.Proxies` 套件，
+同時在註冊 DbContext 時，啟用 Lazy Loading　這個載入機制。
 ```csharp
 builder.Services.AddDbContext<YourDbContext>(options => options
     .UseLazyLoadingProxies()
