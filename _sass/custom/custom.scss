@@ -20,7 +20,10 @@
     }
 }
 
-h2{
-    border-bottom :solid 1px lightgray;
+.main-content h2 {
+    font-weight: 600;
+    padding-bottom: .3em;
+    font-size: 1.5em;
+    border-bottom: 1px solid hsla(210, 18%, 87%, 1);
 }
 
