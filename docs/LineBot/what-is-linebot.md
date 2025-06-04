@@ -28,7 +28,7 @@ nav_exclude: true
 
 ## Messaging API Channel 設定
 
-申請 Channel 成功後，可以找到 Channel secret 和 Channel access token，這兩個資訊程式中會用到。
+申請 Channel 成功後，可以找到 Channel secret 和 Channel access token，WebHook 程式會用到這兩個資訊。
 - Channel secret (在 Basic settings 裡)
 - Channel access tokent (在 Messaging API 裡)
 
