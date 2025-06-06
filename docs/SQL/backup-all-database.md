@@ -58,79 +58,70 @@ DEALLOCATE db_cursor
 
 ### 完整備份
 ```sql
-DECLARE @FOLDERPATH VARCHAR(500)
-DECLARE @FOLDERPATHWITHNAME VARCHAR(500)
-Declare @NAME Varchar(200)
+DECLARE @DbName VARCHAR(50) = 'YFEP'
+DECLARE @BackupFolder VARCHAR(500) = 'D:\DbBackup\'
+DECLARE @BackupFile VARCHAR(500)
 Declare @YEAR Varchar(4)
 Declare @WEEK Varchar(2)
 
-Set @FOLDERPATH = 'D:\DbBackup\'
 SELECT @Week = FORMAT(DATEPART(week, GETDATE()), '00')
 SELECT @YEAR = DATEPART(year, GETDATE())
 
-Select @NAME = 'YFEP_' + @YEAR + 'W' + @Week + '.BAK'
+Set @BackupFile = @BackupFolder + @DbName + '_' + @YEAR + 'W' + @Week + '.BAK'
 
-Set @FOLDERPATHWITHNAME = @FOLDERPATH + @NAME
+EXECUTE master.dbo.xp_create_subdir @BackupFolder
 
-EXECUTE master.dbo.xp_create_subdir @FOLDERPATH
-
-BACKUP DATABASE [YFEP] TO  DISK = @FOLDERPATHWITHNAME 
+BACKUP DATABASE [YFEP] TO  DISK = @BackupFile 
 	   WITH NOFORMAT, 
 	   INIT,			--覆蓋
-	   NAME = @NAME, 
+	   NAME = @DbName, 
 	   SKIP, REWIND, NOUNLOAD, 
 	   COMPRESSION,     --壓縮
 	   STATS = 10
 ```
 ### 差異備份
 ```sql
-DECLARE @FOLDERPATH VARCHAR(500)
-DECLARE @FOLDERPATHWITHNAME VARCHAR(500)
-Declare @NAME Varchar(200)
+DECLARE @DbName VARCHAR(50) = 'YFEP'
+DECLARE @BackupFolder VARCHAR(500) = 'D:\DbBackup\'
+DECLARE @BackupFile VARCHAR(500)
 Declare @YEAR Varchar(4)
 Declare @WEEK Varchar(2)
 
-Set @FOLDERPATH = 'D:\DbBackup\'
 SELECT @Week = FORMAT(DATEPART(week, GETDATE()), '00')
 SELECT @YEAR = DATEPART(year, GETDATE())
 
-Select @NAME = 'YFEP_' + @YEAR + 'W' + @Week + '.BAK'
+Set @BackupFile = @BackupFolder + @DbName + '_' + @YEAR + 'W' + @Week + '.bak'
 
-Set @FOLDERPATHWITHNAME = @FOLDERPATH + @NAME
+EXECUTE master.dbo.xp_create_subdir @BackupFolder
 
-EXECUTE master.dbo.xp_create_subdir @FOLDERPATH
-
-BACKUP DATABASE [YFEP] TO DISK = @FOLDERPATHWITHNAME 
+BACKUP DATABASE [YFEP] TO DISK = @BackupFile 
 	   WITH DIFFERENTIAL, 
 	   NOFORMAT, 
 	   NOINIT,			--附加
-	   NAME = @NAME, 
+	   NAME = @DbName, 
 	   SKIP, REWIND, NOUNLOAD, 
 	   COMPRESSION,		--壓縮
 	   STATS = 10
 ```
 ### 交易記錄備份
 ```sql
-DECLARE @FOLDERPATH VARCHAR(500)
-DECLARE @FOLDERPATHWITHNAME VARCHAR(500)
-Declare @NAME Varchar(200)
+DECLARE @DbName VARCHAR(50) = 'YFEP'
+DECLARE @BackupFolder VARCHAR(500) = 'D:\DbBackup\'
+DECLARE @BackupFile VARCHAR(500)
 Declare @YEAR Varchar(4)
 Declare @WEEK Varchar(2)
 
-Set @FOLDERPATH = 'D:\DbBackup\'
 SELECT @Week = FORMAT(DATEPART(week, GETDATE()), '00')
 SELECT @YEAR = DATEPART(year, GETDATE())
 
-Select @NAME = 'YFEP_' + @YEAR + 'W' + @Week + '.TRN'
+Set @BackupFile = @BackupFolder + @DbName + '_' + @YEAR + 'W' + @Week + '.trn'
 
-Set @FOLDERPATHWITHNAME = @FOLDERPATH + @NAME
+EXECUTE master.dbo.xp_create_subdir @BackupFolder
 
-EXECUTE master.dbo.xp_create_subdir @FOLDERPATH
-
-BACKUP LOG [YFEP] TO DISK = @FOLDERPATHWITHNAME 
+BACKUP LOG [YFEP] TO DISK = @BackupFile 
 	   WITH NOFORMAT, 
 	   NOINIT,		 --附加
-	   NAME = @NAME, 
+	   NAME = @DbName, 
 	   SKIP, REWIND, NOUNLOAD, 
 	   COMPRESSION,  --壓縮
 	   STATS = 10
