@@ -1,4 +1,4 @@
-﻿---
+---
 title: Sample
 layout: default
 parent: Visual Studio

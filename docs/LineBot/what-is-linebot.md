@@ -1,13 +1,12 @@
 ---
-title: Sample
+title: Line Bot 基礎概念
 layout: default
 parent: Line Bot
 nav_order: 1
 description: "...。"
-date: 2025-01-15
+date: 2025-5-15
 tags:
-  - Line Bot
-nav_exclude: true
+  - Line 
 ---
 ## Privider 與 Channel
 
