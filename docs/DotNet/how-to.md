@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to ...
 layout: default
 parent: Dot Net

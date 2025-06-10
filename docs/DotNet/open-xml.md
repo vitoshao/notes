@@ -1,4 +1,4 @@
-﻿---
+---
 title: Open XML SDK
 layout: default
 parent: Dot Net
