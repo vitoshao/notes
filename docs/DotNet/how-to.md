@@ -1,4 +1,4 @@
----
+﻿---
 title: How to ...
 layout: default
 parent: Dot Net
@@ -6,7 +6,6 @@ description: "這裡記錄一些 Dot Net 常見的問題與解決方法"
 date: 2025-02-14
 tags:
   - HttpContext
-  - tag2
 ---
 
 ## 這裡記錄一些 Dot Net 常見的問題與解決方法
