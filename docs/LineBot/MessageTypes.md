@@ -2,12 +2,12 @@
 title: Message Types
 layout: default
 parent: Line Bot
-nav_order: 2
-description: "...。"
+description: "Line Bot Message Types"
 date: 2025-05-20
 tags:
   - LineBot
 ---
+
 
 ## Message Types
 - [Text message 文字訊息](https://developers.line.biz/en/reference/messaging-api/#text-message)
