@@ -4,7 +4,7 @@ layout: default
 parent: SQL
 nav_order: 1
 description: "有時，在 SQL Server 中需要備份所有資料庫，這時使用 T-SQL 腳本來做，會是比較方便的辦法。"
-date: 2025-06-5
+date: 2025-06-05
 tags:
   - SQL
   - Backup
