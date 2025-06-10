@@ -2,6 +2,7 @@
 title: Message Types 
 layout: default
 parent: Line Bot
+nav_order: 2
 description: "Line Bot Message Types"
 date: 2025-05-20
 nav_exclude: false
