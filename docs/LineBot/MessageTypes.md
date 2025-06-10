@@ -4,9 +4,9 @@ layout: default
 parent: Line Bot
 nav_order: 2
 description: "...。"
-date: 2025-06-03
+date: 2025-05-20
 tags:
-  - Line Bot
+  - LineBot
 ---
 
 ## Message Types

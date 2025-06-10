@@ -6,7 +6,7 @@ nav_order: 1
 description: "...。"
 date: 2025-5-15
 tags:
-  - Line 
+  - LineBot
 ---
 ## Privider 與 Channel
 
