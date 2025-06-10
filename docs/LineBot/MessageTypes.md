@@ -4,6 +4,7 @@ layout: default
 parent: Line Bot
 description: "Line Bot Message Types"
 date: 2025-05-20
+nav_exclude: false
 tags:
   - LineBot
 ---
