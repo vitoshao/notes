@@ -12,7 +12,6 @@ tags:
 而 [Open XML SDK](https://github.com/dotnet/Open-XML-SDK) 是微軟提供一套API, 讓開發人員可以在不需要安裝 Microsoft Office 的情況下，直接讀取和寫入 Office 文件。
 
 
-
 ## 前置作業
 先安裝 NuGet 套件：
 ```bash
