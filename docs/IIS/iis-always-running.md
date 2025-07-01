@@ -5,6 +5,8 @@ parent: IIS
 nav_order: 1
 description: "IIS 預先載入的功能，可以讓 IIS 重啟或者集區回收之後將服務自動起來，而非使用者連線後才啟動服務，避免使用者啟動服務過程感到緩慢體驗不佳。"
 date: 2025-01-11
+tags:
+  - IIS
 ---
 
 {: .highlight }

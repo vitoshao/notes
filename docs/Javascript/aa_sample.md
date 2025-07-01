@@ -1,12 +1,13 @@
----
+﻿---
 title: Sample
 layout: default
-parent: Line Bot
+parent: Javascript
 nav_order: 1
 description: "...。"
 date: 2025-01-15
 tags:
-  - Line Bot
+  - tag1
+  - tag2
 nav_exclude: true
 ---
 

@@ -1,14 +1,14 @@
 ---
-title: Sample
+title: Line Bot 基礎概念
 layout: default
 parent: Line Bot
 nav_order: 1
-description: "...。"
-date: 2025-01-15
+description: "Line Bot 基礎概念。"
+date: 2025-06-10
 tags:
-  - Line Bot
-nav_exclude: true
+  - Linebot
 ---
+
 ## Privider 與 Channel
 
 - Provider: 在 LINE Developers 網站上，提供服務並獲取用戶資料的單位，可以是個人開發者、公司或組織。

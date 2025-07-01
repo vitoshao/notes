@@ -1,13 +1,12 @@
 ---
-title: Message Types
+title: Line Bot Message Type
 layout: default
 parent: Line Bot
 nav_order: 1
-description: "...。"
-date: 2025-06-03
+description: "Line Bot Message Type。"
+date: 2025-06-10
 tags:
-  - Line Bot
-nav_exclude: true
+  - Linebot
 ---
 
 ## Message Types

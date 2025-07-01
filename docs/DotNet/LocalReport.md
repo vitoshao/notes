@@ -1,8 +1,7 @@
 ---
 title: RDLC Reports in ASP.Net Core
 layout: default
-parent: DotNet
-nav_order: 1
+parent: Dot Net
 description: "如何在 .Net Core Web 專案中，使用 RDLC 設計報表，並生成 Excel, Word 以及 PDF 的檔案格式進行下載。"
 date: 2025-03-20
 tags:
