@@ -58,8 +58,12 @@ DEALLOCATE db_cursor
 
 ### 完整備份
 ```sql
+-------------------------------------------------------    
+--完整備份 壓縮備份 以週數為檔名 覆蓋
+-------------------------------------------------------
+
 DECLARE @DbName VARCHAR(50) = 'YFEP'
-DECLARE @BackupFolder VARCHAR(500) = 'D:\DbBackup\'
+DECLARE @BackupFolder VARCHAR(500) = 'C:\DbBackup\'
 DECLARE @BackupFile VARCHAR(500)
 Declare @YEAR Varchar(4)
 Declare @WEEK Varchar(2)
@@ -67,11 +71,11 @@ Declare @WEEK Varchar(2)
 SELECT @Week = FORMAT(DATEPART(week, GETDATE()), '00')
 SELECT @YEAR = DATEPART(year, GETDATE())
 
-Set @BackupFile = @BackupFolder + @DbName + '_' + @YEAR + 'W' + @Week + '.BAK'
+Set @BackupFile = @BackupFolder + @DbName + '\' + @DbName + '_' + @YEAR + 'W' + @Week + '.BAK'
 
 EXECUTE master.dbo.xp_create_subdir @BackupFolder
 
-BACKUP DATABASE [YFEP] TO  DISK = @BackupFile 
+BACKUP DATABASE @DbName TO DISK = @BackupFile 
 	   WITH NOFORMAT, 
 	   INIT,			--覆蓋
 	   NAME = @DbName, 
@@ -81,8 +85,12 @@ BACKUP DATABASE [YFEP] TO  DISK = @BackupFile
 ```
 ### 差異備份
 ```sql
+-------------------------------------------------------    
+--差異備份 壓縮備份 以週數為檔名 覆蓋
+-------------------------------------------------------
+
 DECLARE @DbName VARCHAR(50) = 'YFEP'
-DECLARE @BackupFolder VARCHAR(500) = 'D:\DbBackup\'
+DECLARE @BackupFolder VARCHAR(500) = 'C:\DbBackup\'
 DECLARE @BackupFile VARCHAR(500)
 Declare @YEAR Varchar(4)
 Declare @WEEK Varchar(2)
@@ -90,11 +98,11 @@ Declare @WEEK Varchar(2)
 SELECT @Week = FORMAT(DATEPART(week, GETDATE()), '00')
 SELECT @YEAR = DATEPART(year, GETDATE())
 
-Set @BackupFile = @BackupFolder + @DbName + '_' + @YEAR + 'W' + @Week + '.bak'
+Set @BackupFile = @BackupFolder + @DbName + '\' + @DbName + '_' + @YEAR + 'W' + @Week + '.BAK'
 
 EXECUTE master.dbo.xp_create_subdir @BackupFolder
 
-BACKUP DATABASE [YFEP] TO DISK = @BackupFile 
+BACKUP DATABASE @DbName TO DISK = @BackupFile 
 	   WITH DIFFERENTIAL, 
 	   NOFORMAT, 
 	   NOINIT,			--附加
@@ -105,8 +113,12 @@ BACKUP DATABASE [YFEP] TO DISK = @BackupFile
 ```
 ### 交易記錄備份
 ```sql
+-------------------------------------------------------    
+--交易記錄備份 壓縮備份 以週數為檔名 覆蓋
+-------------------------------------------------------
+
 DECLARE @DbName VARCHAR(50) = 'YFEP'
-DECLARE @BackupFolder VARCHAR(500) = 'D:\DbBackup\'
+DECLARE @BackupFolder VARCHAR(500) = 'C:\DbBackup\'
 DECLARE @BackupFile VARCHAR(500)
 Declare @YEAR Varchar(4)
 Declare @WEEK Varchar(2)
@@ -114,7 +126,7 @@ Declare @WEEK Varchar(2)
 SELECT @Week = FORMAT(DATEPART(week, GETDATE()), '00')
 SELECT @YEAR = DATEPART(year, GETDATE())
 
-Set @BackupFile = @BackupFolder + @DbName + '_' + @YEAR + 'W' + @Week + '.trn'
+Set @BackupFile = @BackupFolder + @DbName + '\' + @DbName + '_' + @YEAR + 'W' + @Week + '.TRN'
 
 EXECUTE master.dbo.xp_create_subdir @BackupFolder
 
