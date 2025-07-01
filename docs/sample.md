@@ -1,7 +1,7 @@
 ---
 title: Sample
 layout: default
-parent: Sample
+parent: Visual Studio
 nav_order: 1
 description: "...。"
 date: 2025-01-15

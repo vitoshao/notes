@@ -41,7 +41,9 @@ tags:
 如果要由零開始建立反向工程範本，基本上不太可能，比較簡便的方法是先產生預設的範本，然後再對預設範本進行修改。
 ```
 #安裝 EFCore 範本套件
-dotnet new install Microsoft.EntityFrameworkCore.Templates
+dotnet new install Microsoft.EntityFrameworkCore.Templates   //預設會安裝最近版本的 Template
+
+dotnet new install Microsoft.EntityFrameworkCore.Templates::8.0.11   //指定安裝版本
 
 #建立 EF Template
 dotnet new ef-templates
