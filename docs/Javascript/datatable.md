@@ -12,12 +12,11 @@ tags:
 ## 相關套件
 
 
-## 樣式設定
+## 初始化設定
 
-### 初始化設定
 ![Datatable Style 1](images/datatable-style-1.png)
 
-```#javascript
+```js
 var myTable = $("#MyTable").DataTable({
     ordering : true,
     lengthChange: true,
@@ -27,7 +26,7 @@ var myTable = $("#MyTable").DataTable({
 });
 ```
 
-```#javascript
+```js
 myTable = $("#MyTable").DataTable({
     ajax: {
         url: '@Url.Action("GetAnnualRevenue", "Dashboard")',
@@ -134,51 +133,171 @@ myTable = $("#MyTable").DataTable({
 ```
 
 
-加入class樣式設定
+### 排序
 
-設定資料型態
+#### 整個Table的排序
+```js
+ordering : false
+```
+#### 單一欄位的排序
+```js
+columns[
+	{
+		orderable : false
+	}
+]
+```
+```js
+columnDefs: [
+	{
+		// 找尋class有nosort欄位, 不排序 
+		targets: 'nosort',
+		orderable: false   			
+		// PS.這個方法只適用HTML中有直接設定標題列,並指定class，若是由 Datatable 產生標題列, 則無效.
+	},
+	{
+		// 第 3,4 欄不排序 
+		targets: [ 2, 3 ],
+		orderable: false   //class有Revenue的欄位, 不排序
+	}
+```
+#### 中文排序問題:	
+DataTables 中文排序需要使用自訂排序規則來處理中文字元的比較。 可以透過 $.fn.dataTable.ext.oSort 來自訂排序方法，並使用 localeCompare() 來進行中文比較。 此外，還需要在 columnDefs 中指定該列使用自訂排序器。
+```js
 
-設定格式
-日期
-數值
+{ 
+    data : 'KeyWord', 
+    type : 'chinese' 
+},
 
-選取行
-            tableProcessFactory.on('click', 'tbody tr', function () {
-                if (!$(this).hasClass('selected')) {
-                    tableProcessFactory.$('tr.selected').removeClass('selected');
-                    $(this).addClass('selected');
-                    var rowIndex = $(this).closest('tr');
-                    var rowdata = tableProcessFactory.row(rowIndex).data();
-                    $("#PFID").val(rowdata.PFID)
-                    $(".ProcessName").text(rowdata.ProcessName)
-                    ReloadCostAndDays();
-                }
-            });
+jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+	"chinese-asc": function (a, b) {
+		return a.localeCompare(b, 'zh-Hant'); // 使用繁體中文排序
+	},
+	"chinese-desc": function (a, b) {
+		return b.localeCompare(a, 'zh-Hant');
+	}
+});
+```
 
-## 串接 API 讀取資料
+### 設定資料型態
+```js
+$('#myTable').DataTable({
+    columns: [
+        { data: 'name', type: 'string' }, // Explicitly set as string
+        { data: 'age', type: 'num' },    // Explicitly set as number
+        { data: 'dob', type: 'date' }    // Explicitly set as date
+    ]
+});
+```
 
+### 設定格式
+#### 日期
+```js
+render: function (data, type, row) {
+    return moment(row.OrderDate).format('YYYY/MM/DD');
+}
+```
+#### 數值
+```js
+render: function (data, type, row) {
+    var number = DataTable.render.number(',', '.', 0, '').display(data);
+    if (data == null)
+        return '';
+    else
+        return number;
+}
+```
 
-載入完成事件
+### 重載
+```js
+myTable.ajax.reload();
+myTable.page(0);  //重載後回到第一頁
+```
+```js
+myTable.ajax.reload(function (json) {
+	//callback function
+});
+```
+```js
+$.ajax({
+	url: '@Url.Action("GetAnnualRevenue", "Dashboard")',
+	type: 'POST',
+	data: {'companyid':279, 'groupby' : 'm'},
+	success: function (result, textStatus, jqXHR) {
+		console.log(result);
+		myTable.clear();
+		myTable.rows.add(result.data);
+		myTable.draw();
+	},
+});
+```
+### 破壞
 
-重新載入資料
+設定 Datatable 重新載入時，必須整個重新建立。預設值：false。
 
-            $("#btnQuery").click(function () {
-                tableProcessFactory.ajax.reload(function (json) {
-                    if (json.data.length > 0) {
-                        $('#ProcessFactory tbody tr:eq(0)').click();
-                    }
-                    else {
-                        tableProcessCost.clear().draw();
-                        tableProcessDays.clear().draw();
-                    }
-                });
+```js
+destroy: true,
+```
+### 事件(Events)	
 
-## Responsive 設定
+#### 搜尋事件
+```js
+mytable.on('search',function(){ 
+    alert('開始搜尋');
+});
+```
+#### Click事件
+```js
+myTable.on('click','tr',function(){
+    console.log('tr click, this =>' ,this);
+    var data = myTable.row(this).data();
+    console.log('tr click, data =>' , data);
+});
 
+myTable.on('click', '.btnUpdate', function () {
+    var data = myTable.row($(this).closest('tr')).data();
+    console.log('btnUpdate, data =>', data);
+});
 
+myTable.on('click', '.btnDelete', function () {
+    var data = myTable.row($(this).closest('tr')).data();
+    console.log('btnDelete, data =>',data);
+});
+```
+#### 載入完成事件
+```js
+"initComplete": function () {
+    $("#row-count").html("(共" + this.api().data().length + "筆)");
+    if (this.api().data().length < 11) {
+        //筆數判斷
+        ...
+    }
+    else {
+        ...
+    }
+}
+```
 
-## 參考資料
-- <a target="_blank" href="">XXXXXXXX</a>
-- <a target="_blank" href="">XXXXXXXX</a>
-- <a target="_blank" href="">XXXXXXXX</a>
-- <a target="_blank" href="">XXXXXXXX</a>
+### 動作(Actions)
+```js
+myTable.clear().draw();   //清空
+```
+```js
+$('#ProductName').keyup(function () {
+    myTable.column(5).search($(this).val()).draw();  //顯示篩選後的結果
+})
+```
+
+### 選取行
+```js
+myTable.on('click', 'tbody tr', function () {
+    if (!$(this).hasClass('selected')) {
+        myTable.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+        var rowIndex = $(this).closest('tr');
+        var rowdata = myTable.row(rowIndex).data();
+        ...
+    }
+});
+```
