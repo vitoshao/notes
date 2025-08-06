@@ -47,7 +47,7 @@ tags:
 
 ---
 
-例如：若資料庫中有個 `Instructor` 資料表，含有四個欄位：`Id`, `FirstName`, `LastName`, `HireDate`，其由只有 `LastName` 欄位允許 NULL。
+例如：若資料庫中有個 `Instructor` 資料表，含有四個欄位：`Id`, `FirstName`, `LastName`, `HireDate`，其中只有 `LastName` 欄位允許 NULL。
 
 ![Instructor Table](images/instructor-talbe.png)
 
