@@ -10,7 +10,7 @@ tags:
 ---
 相關套件
 
-## 初始化設定
+# 初始化設定
 
 ![Datatable Style 1](images/datatable-style-1.png)
 
@@ -24,7 +24,7 @@ var myTable = $("#MyTable").DataTable({
 });
 ```
 
-## ＤataTable 常手設定
+# ＤataTable 基本設定
 
 下方內容說明，使用這個DataTable設定當作範本。
 ```js
@@ -40,9 +40,14 @@ myTable = $("#MyTable").DataTable({
     info: false,
     paging: true,
 
+    pageLength:10,          //設定每頁10筆 (default=10)
+
     responsive: true,
     deferRender: true,      //第2頁以後的資料會廷遲載入, 適合大量資料載入, 2.X版預設值為true, 1.X版預設值為false
     destroy: false,
+
+    stateSave: true,        //是否記住頁面狀態值(defaul=false), 例如:資料重載後,會自動跳到原來頁數
+    select : true,          //設定 row 有選取效果 (反藍)
 
     //凍結設定
     fixedColumns: true,     //設定凍結, 預設標題列和第一欄 (paging必須為true)
@@ -326,3 +331,14 @@ myTable.on('click', 'tbody tr', function () {
 });
 ```
 
+# ＤataTable 進階設定
+
+rowsGroup: [0],
+
+"buttons": [
+
+],
+
+columnDefs: [
+
+]
