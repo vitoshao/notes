@@ -8,9 +8,7 @@ date: 2025-06-12
 tags:
   - DataTables
 ---
-
-## 相關套件
-
+相關套件
 
 ## 初始化設定
 
@@ -26,6 +24,9 @@ var myTable = $("#MyTable").DataTable({
 });
 ```
 
+## ＤataTable 常手設定
+
+下方內容說明，使用這個DataTable設定當作範本。
 ```js
 myTable = $("#MyTable").DataTable({
     ajax: {
@@ -132,14 +133,13 @@ myTable = $("#MyTable").DataTable({
 });
 ```
 
+## 排序
 
-### 排序
-
-#### 整個Table的排序
+### 整個Table的排序
 ```js
 ordering : false
 ```
-#### 單一欄位的排序
+### 單一欄位的排序
 ```js
 columns[
 	{
@@ -161,7 +161,7 @@ columnDefs: [
 		orderable: false   //class有Revenue的欄位, 不排序
 	}
 ```
-#### 中文排序問題:	
+### 中文排序問題:	
 DataTables 中文排序需要使用自訂排序規則來處理中文字元的比較。 可以透過 $.fn.dataTable.ext.oSort 來自訂排序方法，並使用 localeCompare() 來進行中文比較。 此外，還需要在 columnDefs 中指定該列使用自訂排序器。
 ```js
 
@@ -180,7 +180,7 @@ jQuery.extend(jQuery.fn.dataTableExt.oSort, {
 });
 ```
 
-### 設定資料型態
+## 設定資料型態
 ```js
 $('#myTable').DataTable({
     columns: [
@@ -191,14 +191,14 @@ $('#myTable').DataTable({
 });
 ```
 
-### 設定格式
-#### 日期
+## 設定格式
+### 日期
 ```js
 render: function (data, type, row) {
     return moment(row.OrderDate).format('YYYY/MM/DD');
 }
 ```
-#### 數值
+### 數值
 ```js
 render: function (data, type, row) {
     var number = DataTable.render.number(',', '.', 0, '').display(data);
@@ -209,52 +209,73 @@ render: function (data, type, row) {
 }
 ```
 
-### 重載
+## 凍結設定
+```js
+fixedColumns: true,     // 設定凍結, 預設凍結標題列和第一欄 (paging必須為true)
+scrollCollapse: true,   // 預設為false 是否開始滾軸功能控制X、Y軸
+scroller: true,
+scrollY: 200,           // Y捲軸高度200, 超過才顯示Y捲軸
+```
+
+## 廷遲載入
+第2頁以後的資料會廷遲載入, 適合大量資料載入, 2.X版預設值為true, 1.X版預設值為false
+```js
+deferRender: true,
+```
+
+## 重載
+
+1. 直接以 DataTable 裡頭的 ajax 設定，當做資料來源重新載入。
 ```js
 myTable.ajax.reload();
 myTable.page(0);  //重載後回到第一頁
 ```
+重載後，若有需要也可以加入callback function.
 ```js
 myTable.ajax.reload(function (json) {
 	//callback function
 });
 ```
+2. 使用外部 ajax, 取得資料後, 餵給 DataTable.
 ```js
 $.ajax({
-	url: '@Url.Action("GetAnnualRevenue", "Dashboard")',
+	url: '@Url.Action("action", "controller")',
 	type: 'POST',
 	data: {'companyid':279, 'groupby' : 'm'},
 	success: function (result, textStatus, jqXHR) {
-		console.log(result);
 		myTable.clear();
 		myTable.rows.add(result.data);
 		myTable.draw();
 	},
 });
 ```
-### 破壞
+
+## 破壞
 
 設定 Datatable 重新載入時，必須整個重新建立。預設值：false。
 
 ```js
 destroy: true,
 ```
-### 事件(Events)	
 
-#### 搜尋事件
+## 事件(Events)	
+
+### 搜尋事件
 ```js
 mytable.on('search',function(){ 
     alert('開始搜尋');
 });
 ```
-#### Click事件
+### Click事件
 ```js
+//Row Click Event
 myTable.on('click','tr',function(){
     console.log('tr click, this =>' ,this);
     var data = myTable.row(this).data();
     console.log('tr click, data =>' , data);
 });
 
+//Button Click Event
 myTable.on('click', '.btnUpdate', function () {
     var data = myTable.row($(this).closest('tr')).data();
     console.log('btnUpdate, data =>', data);
@@ -265,7 +286,10 @@ myTable.on('click', '.btnDelete', function () {
     console.log('btnDelete, data =>',data);
 });
 ```
-#### 載入完成事件
+![Datatable Click Tr](images/datatable-click-tr.png)
+![Datatable Click Class](images/datatable-click-class.png)
+
+### 載入完成事件
 ```js
 "initComplete": function () {
     $("#row-count").html("(共" + this.api().data().length + "筆)");
@@ -279,7 +303,7 @@ myTable.on('click', '.btnDelete', function () {
 }
 ```
 
-### 動作(Actions)
+## 動作(Actions)
 ```js
 myTable.clear().draw();   //清空
 ```
@@ -289,7 +313,7 @@ $('#ProductName').keyup(function () {
 })
 ```
 
-### 選取行
+## 選取行
 ```js
 myTable.on('click', 'tbody tr', function () {
     if (!$(this).hasClass('selected')) {
@@ -301,3 +325,4 @@ myTable.on('click', 'tbody tr', function () {
     }
 });
 ```
+

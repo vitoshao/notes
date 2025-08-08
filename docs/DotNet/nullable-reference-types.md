@@ -111,3 +111,13 @@ public partial class Instructor  //Entity 型別
 - 若為參考型別：可以加上 `!` 符號，表示這個屬性不會是 NULL。或者 new 一個空集合當做預設值。
 
 ![Null Warning Fix](images/null-warning-fix.png)
+
+
+### 空值容忍運算子 (null-forgiving operator)
+
+將「!」這個符號，當做運算子使用時，它稱為空值容忍運算子 `null-forgiving` 或 `null-suppression` operator.
+
+一般情況下，若有啟用 Nullable Reference Types 功能時，程式碼遇到 null 參考的可能時，編譯器都會觸發警告。
+若你明確知道該運算不會有Null情況時，就可以使用 null-forgiving operator，告訴編譯器可以不觸發警告。
+
+![Null Forgiving 1](images/null-forgiving-1.png)
