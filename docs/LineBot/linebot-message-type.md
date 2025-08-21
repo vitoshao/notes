@@ -9,6 +9,11 @@ tags:
   - Linebot
 ---
 
+
+透過 webhook event 中的 Source 屬性，可以區分訊息是由哪裡來的
+![Linebot Message Type](images/linebot-message-type.png)https://console.developers.google.com/billing/enable?project=476765960885
+
+
 ## Message Types
 1. [Text message 文字訊息](https://developers.line.biz/en/docs/messaging-api/message-types/#text-message)
 1. [Text message(V2) 文字訊息(V2)](https://developers.line.biz/en/docs/messaging-api/message-types/#text-messages-v2)
