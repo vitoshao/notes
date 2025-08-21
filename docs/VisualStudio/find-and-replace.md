@@ -23,7 +23,7 @@ Replace：
 ```
 ![Find And Replace 1](images/find-and-replace-1.png)
 
-調整 Regex 搜尋式子，加上?，使用不貪心尋找，避免找到的範圍過大。
+上面搜尋到的結果，連同 class 屬性都包含了，所以調整 Regex 搜尋式子，加上?，使用不貪心尋找，避免找到的範圍過大。
 ```
 (style)\s*=\s*\"(.*?)\"
 Replace：
@@ -31,7 +31,7 @@ Replace：
 ![Find And Replace 1](images/find-and-replace-2.png)
 
 ### 1-2
-將這5行程式碼改成同一行
+底下例子，若我們想將DropDownList那5行程式碼改成同一行。
 ```
 Find:  \@Html\.DropDownList\(\r\n(.+?)\r\n(.+?)\r\n(.+?)\r\n(.+?\))
 Replae:  @Html.DropDownList($1 $2 $3 $4)
@@ -62,7 +62,8 @@ Replae: \$1
 ```c#
 //取代前
 @Html.DropDownList("CompanyId", ViewBag.Company_SelectList as List<SelectListItem>, htmlAttributes: new { @class = "form-select", @style = "z-index:99999" })
-//取代前
+
+//取代後
 \@Html\.DropDownList\(\"CompanyId\", ViewBag\.Company_SelectList as List\<SelectListItem\>, htmlAttributes: new \{ \@class = \"form-select\", \@style = \"z-index:99999\" \}\)
 ```
 
@@ -89,6 +90,7 @@ Replace：<label asp-for="$1" class="$2" style="$3"></label>
 ```c#
 //取代前
 @Html.LabelFor(m => m.Data.EffectiveDate, c#Attributes: new { @class = "control-label col-md-0", @style = "padding-top:7px;" })
+
 //取代後
 <label asp-for="Data.EffectiveDate" class="control-label col-md-0" style="padding-top:7px;"></label>
 ```
