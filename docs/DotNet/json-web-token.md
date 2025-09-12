@@ -42,6 +42,8 @@ HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
     };
     var key = "pQeP5X9wejpFfQGgSjyWB8iFdLDGHEV8";
 
+    // Cereate  JWT
+
     byte[] headerByte = Encoding.Default.GetBytes(JsonConvert.SerializeObject(header));
     byte[] payloadByte = Encoding.Default.GetBytes(JsonConvert.SerializeObject(payload));
 
@@ -51,6 +53,16 @@ HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
     string signatureBase64 = Convert.ToBase64String(signatureByte).TrimEnd('=');
 
     string tokenString = $"{headerBase64}.{payloadBase64}.{signatureBase64}";
+
+    // Decode JWT
+
+    var handler = new JwtSecurityTokenHandler();
+    var jwtSecurityToken = handler.ReadJwtToken(tokenString);
+    var claims = jwtSecurityToken.Claims.ToList();
+    foreach (var claim in claims)
+    {
+        Debug.WriteLine($"{claim.Type} {claim.Value}");
+    } 
 ```
 ```csharp
     public static byte[] HMACSHA256(this string value, string key)
@@ -76,7 +88,6 @@ Nuget安裝套件:
     var creds = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
     var header = new JwtHeader(creds);
-
     var payload = new JwtPayload
     {
         { "sub", "1234567890" },
@@ -84,15 +95,18 @@ Nuget安裝套件:
         { "iat", "1516239022" }
     };
 
-    var token = new JwtSecurityToken(header, payload);
     var handler = new JwtSecurityTokenHandler();
+
+    // Cereate  JWT
+
+    var token = new JwtSecurityToken(header, payload);            
     string tokenString = handler.WriteToken(token);
+
+    // Decode JWT
+    var jwtSecurityToken = handler.ReadJwtToken(tokenString);
+    var claims = jwtSecurityToken.Claims.ToList();
+    foreach (var claim in claims)
+    {
+        Debug.WriteLine($"{claim.Type} {claim.Value}");
+    }
 ```
-
-
-
-## 參考資料
-- <a target="_blank" href="">XXXXXXXX</a>
-- <a target="_blank" href="">XXXXXXXX</a>
-- <a target="_blank" href="">XXXXXXXX</a>
-- <a target="_blank" href="">XXXXXXXX</a>
