@@ -34,7 +34,9 @@ MS SQL Server 2008開始支援空間資料類型，主要有兩種：
   用來表示平面空間資料 (planar spatial data)，如地圖投影座標系統 (projected coordinate systems)。
   geometry 資料類型同時符合「開放式地理空間協會 (Open Geospatial Consortium, OGC) 的 SQL 簡單特徵規格」1.1.0 版，且符合 SQL MM (ISO 標準)。
 
-- **geography**: 用來表示橢球空間資料 (ellipsoidal spatial data)，如經緯度座標系統 (latitude/longitude coordinate systems)。
+- **geography**: 
+
+  用來表示橢球空間資料 (ellipsoidal spatial data)，如經緯度座標系統 (latitude/longitude coordinate systems)。
 
 ## 具現化空間資料
 
@@ -109,9 +111,10 @@ SELECT @g2.STAsBinary();  --資料的WKB格式
 而 geometry 欄位的實際資料含有其他相關資訊，如 SRID (Spatial Reference System Identifier) 等，所以不會等於 WKB，實際上會比 WKB 格式的資料還要大。
 
 ```sql
-Select @g1.STAsText() WKT, @g1.STAsBinary() WKB, @g1 db
-```
+declare @g1 geography = geography::Point(25.0284648,121.5367542, 4326)  ----台北車站座標
 
+Select @g1.STAsText() WKT, @g1.STAsBinary() WKB, @g1 'geography'
+```
 ![Germetry02](images/germetry02.png)
 
 # 地理資料方法
@@ -136,7 +139,7 @@ Select @g1.STAsText() WKT, @g1.STAsBinary() WKB, @g1 db
 | STGeomFromText() | 由 WKT 格式建立空間資料 |
 | STGeomFromWKB() | 由 WKB 格式建立空間資料 |
 
-## 範例
+## 查詢範例
 ```sql
 DECLARE @g1 geography
 
@@ -155,10 +158,10 @@ select * from Country where Coverage.STContains(@g1)=1
 SET @g1 = geography::Point(24.808227, 121.041279, 4326)   --竹北高鐵站座標
 select * from Country where Coverage.STContains(@g1)=1
 
-SET @g1 = geography::Point(23.211390, 119.418015, 4326)	  --澎湖七美機場
+SET @g1 = geography::Point(23.211390, 119.418015, 4326)   --澎湖七美機場
 select * from Country where Coverage.STContains(@g1)=1
 
-SET @g1 = geography::Point(23.235220, 119.484372, 4326)	  --澎湖海域
+SET @g1 = geography::Point(23.235220, 119.484372, 4326)   --澎湖海域
 select * from Country where Coverage.STContains(@g1)=1
 ```
 ![Germetry04](images/germetry04.png)
