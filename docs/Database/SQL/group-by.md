@@ -160,5 +160,4 @@ SUM(Qty) AS QtySum
 FROM @List
 GROUP BY GROUPING SETS ((TypeA,TypeB),(TypeA))
 ```
-
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisSiUUanPFbcrqvWQbklZIkIOE864Mt8gaUCrhd8l1OqOP9f5awwW6Qyiqj_6uRiThIaTwUJwk5JKtrK5-rpntOdHImFy3lL7Z9LUPkk9qDu70G2rnw3grxSKX4xyoTQfJnH3b0YTdiSw/s0/sql-order-by-grouping-3.png)
+![Grouping 05](images/grouping-05.png)
