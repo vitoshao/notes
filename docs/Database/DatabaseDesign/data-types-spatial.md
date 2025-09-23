@@ -146,6 +146,8 @@ Select @g1.STAsText() WKT, @g1.STAsBinary() WKB, @g1 'geography'
 
 將界線資料資料轉成 geography 之後，就可以透過 OGC 方法進行查詢。
 
+### 查詢座標落在哪一個縣市
+
 ```sql
 DECLARE @g1 geography
 
@@ -171,6 +173,8 @@ SET @g1 = geography::Point(23.235220, 119.484372, 4326)   --澎湖海域
 select * from Country where Coverage.STContains(@g1)=1
 ```
 ![Germetry04](images/germetry04.png)
+
+### 計算每個縣市的大小以及離台北車站的距離
 
 ```sql
 declare @g1 geography = geography::Point(25.0284648,121.5367542, 4326)  ----台北車站座標
