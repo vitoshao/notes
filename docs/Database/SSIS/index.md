@@ -1,7 +1,7 @@
 ---
 title: SSIS
 parent: Database
-nav_order: 5
+nav_order: 7
 icon: <i class="fa-solid fa-database"></i>
 ---
 # SQL Server Integration Services (SSIS)

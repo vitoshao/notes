@@ -50,19 +50,19 @@ The background color is `#ffffff` for light mode and `#000000` for dark mode.
 
 ## 列表
 
-### 無序清單
+### **無序清單**
 - 項目 1
 - 項目 2
 - 項目 3
   - 項目 3-1 
   - 項目 3-2 
 
-### 有序清單
+### **有序清單**
 1. 項目 1
 1. 項目 2
 1. 項目 3
 
-### 工作清單
+### **工作清單**
 - [ ] 項目 1
 - [ ] 項目 2
 - [x] 項目 3
@@ -73,7 +73,7 @@ The background color is `#ffffff` for light mode and `#000000` for dark mode.
 1. 項目 4
 1. 項目 5
 
-### 定義清單
+### **定義清單**
 <dl>
 <dt>Name</dt>
 <dd>Godzilla</dd>
@@ -87,13 +87,30 @@ The background color is `#ffffff` for light mode and `#000000` for dark mode.
 
 ## 連結與圖片
 
+### **連結**
+
 Markdown 語法建立的連結無法另開新頁籤
-- [Loading Related Data](https://learn.microsoft.com/en-us/ef/core/querying/related-data/)
+
+- [Loading Related Data](https://learn.microsoft.com/en-us/ef/core/querying/related-data/ "Loading Related Data")
 - [Introduction to relationships](https://learn.microsoft.com/en-us/ef/core/modeling/relationships)
 
 若要開新頁籤，只能使用 html 
+
 - <a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/querying/related-data/">Loading Related Data</a>
 - <a target="_blank" href="https://learn.microsoft.com/en-us/ef/core/modeling/relationships">Introduction to relationships</a>
+
+若要連結到同一個網頁中的某個區塊，可以使用 `#` 加上區塊標題名稱
+
+[跳至目錄](#目錄)
+
+{: .note}
+>若目標區塊標題有空白或者有英文字，則空白會被轉成 `-`，英文字會被轉成小寫。 
+>
+>例如：若標題內容為 `內嵌 Html 語法`，這個標題的 ID 會被轉成 `內嵌-html-語法`
+>
+>所以連結到這個區塊的語法為 `[內嵌 Html 語法](#內嵌-html-語法)`
+
+### **圖片**
 
 Markdown 語法建立的圖片無法更改顯示大小
 
@@ -136,14 +153,14 @@ public class Teacher
 
 ## 註解 (Callout)
 
-### 一般註解
+### **一般註解**
 
 >這是一段註解。
 >這還是同一段註解。
 
 >這是另一段註解。使用 `空行` 來分隔不同段落。
 
-### 有樣式的註解
+### **有樣式的註解**
 
 {: .note}
 >這是一段有特殊樣式的註解，可以用來`強調重點`。
@@ -157,7 +174,7 @@ public class Teacher
 {: .highlight}
 >這是一段有特殊樣式的註解，沒有`TITLE`
 
-### 自訂標題的註解
+### **自訂標題的註解**
 
 {: .note-title}
 >My Note
@@ -204,7 +221,6 @@ public class Teacher
 
 <details markdown="block">
 <summary>Shopping list (click me!)</summary>
-
 This is content inside a `<details>` dropdown.
 - [x] Apples
 - [ ] Oranges

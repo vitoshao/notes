@@ -28,16 +28,17 @@ Auditing by adding data lineage information for your data loads is quite simple.
 
 The following query uses system functions that are very useful for capturing lineage information.
 
-- APP\_NAME() ：ApplicationName
-- DATABASE\_PRINCIPAL\_ID ：DatabasePrincipalId
-- USER\_NAME ：DatabasePrincipalName
-- SUSER\_ID ：ServerPrincipalId
-- SUSER\_SID ：ServerPrincipalSID
-- SUSER\_SNAME ：ServerPrincipalName
+- APP_NAME() ：ApplicationName
+- DATABASE_PRINCIPAL_ID ：DatabasePrincipalId
+- USER_NAME ：DatabasePrincipalName
+- SUSER_ID ：ServerPrincipalId
+- SUSER_SID ：ServerPrincipalSID
+- SUSER_SNAME ：ServerPrincipalName
 - CONNECTIONPROPERTY ：TransportProtocol
 - CONNECTIONPROPERTY ：ClientNetAddress
-- CURRENT\_TIMESTAMP ：CurrentDateTime
+- CURRENT_TIMESTAMP ：CurrentDateTime
 - @@ROWCOUNT ：RowsProcessedByLastCommand
+
 ```sql
 SELECT
 APP_NAME() AS ApplicationName,

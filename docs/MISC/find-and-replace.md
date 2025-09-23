@@ -1,7 +1,7 @@
 ---
-title: 使手 Regular Expression 尋找和取代文字
+title: 使用 Regular Expression 尋找和取代文字
 layout: default
-parent: Visual Studio
+parent: MISC
 nav_order: 1
 description: "使手 Regular Expression 尋找和取代文字。"
 date: 2025-06-16

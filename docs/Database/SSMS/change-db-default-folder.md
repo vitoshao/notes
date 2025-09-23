@@ -1,5 +1,5 @@
 ---
-title: 如何變更資料庫的預設目錄
+title: 如何變更 SQL Server 預設的資料檔路徑與備份檔路徑
 layout: default
 parent: SSMS
 nav_order: 1
