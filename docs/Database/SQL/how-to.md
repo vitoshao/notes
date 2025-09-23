@@ -124,33 +124,33 @@ INSERT INTO Tickets VALUES
 ```sql
 ALTER PROCEDURE usp_GetPersonList (@TicketId varchar(max))
 AS
-	DECLARE @Person varchar(Max);
-	DECLARE @PersonList varchar(Max);
-
-	DECLARE _cursor CURSOR FOR
-	SELECT Person FROM Tickets WHERE TicketId=@TicketId
-
-	OPEN _cursor
-	FETCH NEXT FROM _cursor INTO @Person
-
-	SET @PersonList='';
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-	Set @PersonList = @PersonList + ',' + @Person
-	FETCH NEXT FROM _cursor INTO @Person
-	END
-
-	IF LEN(@PersonList)>0
-	SET @PersonList = Substring(@PersonList,2,LEN(@PersonList));
-
-	SELECT @PersonList;
-
-	CLOSE _cursor
-	DEALLOCATE _cursor
-	GO
-
-	EXEC usp_GetPersonList 'T0001'
-	GO
+    DECLARE @Person varchar(Max);
+    DECLARE @PersonList varchar(Max);
+    
+    DECLARE _cursor CURSOR FOR
+    SELECT Person FROM Tickets WHERE TicketId=@TicketId
+    
+    OPEN _cursor
+    FETCH NEXT FROM _cursor INTO @Person
+    
+    SET @PersonList='';
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+    Set @PersonList = @PersonList + ',' + @Person
+    FETCH NEXT FROM _cursor INTO @Person
+    END
+    
+    IF LEN(@PersonList)>0
+    SET @PersonList = Substring(@PersonList,2,LEN(@PersonList));
+    
+    SELECT @PersonList;
+    
+    CLOSE _cursor
+    DEALLOCATE _cursor
+    GO
+    
+    EXEC usp_GetPersonList 'T0001'
+    GO
 ```
 
 ![](http://127.0.0.1:8080/_images/cs/sql-comma-separated.png)

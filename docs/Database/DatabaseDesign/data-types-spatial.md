@@ -140,6 +140,12 @@ Select @g1.STAsText() WKT, @g1.STAsBinary() WKB, @g1 'geography'
 | STGeomFromWKB() | 由 WKB 格式建立空間資料 |
 
 ## 查詢範例
+
+由 [國土測量圖資]網站上的「直轄市、縣市界線(TWD97經緯度)1140318」，可以取得各縣市的行政區域界線資料。
+![Germetry06](images/germetry06.png)
+
+將界線資料資料轉成 geography 之後，就可以透過 OGC 方法進行查詢。
+
 ```sql
 DECLARE @g1 geography
 

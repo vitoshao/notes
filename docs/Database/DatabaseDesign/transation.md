@@ -1,7 +1,7 @@
 ---
-title: Transactions
+title: Transactions and Lock Mode
 layout: default
-parent: SQL
+parent: DatabaseDesign
 nav_order: 3
 description: "Transactions"
 date: 2013-05-02
