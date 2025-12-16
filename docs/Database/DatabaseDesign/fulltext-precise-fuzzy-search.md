@@ -19,26 +19,26 @@ postid: "5335859655789397"
 - 接近另一個單字的單字。
 - 單字或片語的前置詞。
 ```sql
-CONTAINS ( <InludedColumns>, <SearchCondition> [,language_term] )
+CONTAINS ( <IncludedColumns>, <SearchCondition> [,language_term] )
 ```
 
-### InludedColumns
+## IncludedColumns
 
 這個參數是用來指明比對的欄位
 
-#### 比對單一欄位
+### 比對單一欄位
 ```sql
-SELECT \* FROM Documents WHERE CONTAINS(Content, '台北')
+SELECT * FROM Documents WHERE CONTAINS(Content, '台北')
 ```
 
-#### 比對多個欄位
+### 比對多個欄位
 ```sql
-SELECT \* FROM Documents WHERE CONTAINS((Title, Content), '台北')
+SELECT * FROM Documents WHERE CONTAINS((Title, Content), '台北')
 ```
 
-#### 比對全部欄位
+### 比對全部欄位
 ```sql
-SELECT \* FROM Documents WHERE CONTAINS(\*, '台北')
+SELECT * FROM Documents WHERE CONTAINS(*, '台北')
 ```
 
 ### SearchCondition
@@ -63,26 +63,26 @@ SELECT \* FROM Documents WHERE CONTAINS(\*, '台北')
 - 如果在 Simple Term 中使用非搜尋字，SQL Server 會傳回一則錯誤訊息，指出查詢只包含非搜尋字。
 ```sql
 --搜尋條件是一個「字」
-SELECT \* FROM Documents WHERE CONTAINS(Content, '市長')
+SELECT * FROM Documents WHERE CONTAINS(Content, '市長')
 
 --搜尋條件是一個「片語」，要用雙引號括住
-SELECT \* FROM Documents WHERE CONTAINS(Content, '"台北 市長"')
+SELECT * FROM Documents WHERE CONTAINS(Content, '"台北 市長"')
 
 --片語中的單字順序，必須同索引中的順序才找的到
-SELECT \* FROM Documents WHERE CONTAINS(Content, '"市長 台北"')  --這會找不到。
+SELECT * FROM Documents WHERE CONTAINS(Content, '"市長 台北"')  --這會找不到。
 ```
 
 ## 前置項目（Prefix Term）
 
 - 可用來搜尋指定文字開頭的單字或片語。
 - 應該用雙引號括住
-- 在後面引號前要加上\*號
+- 在後面引號前要加上*號
 ```sql
 --這會找不到，因為索引中不含"市"這個token.
-SELECT \* FROM Documents WHERE CONTAINS(Content, '市')
+SELECT * FROM Documents WHERE CONTAINS(Content, '市')
 
---但因為含"市長"這個token，所以可以用"市\*"找到
-SELECT \* FROM Documents WHERE CONTAINS(Content, '"市\*"')
+--但因為含"市長"這個token，所以可以用"市*"找到
+SELECT * FROM Documents WHERE CONTAINS(Content, '"市*"')
 ```
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHw9ZKYA-uLEEZuldwIfteBZfh_tqxkItenvd0VmaibJPugsnQfGT0EAQHGpgwkwko-PsqnS_Hg37b69HRJUlucfAgfnkcf3FA-OBj1Rq3ZdtP-bYT8zH0JfZuJgSxqCMgesVgb7Aw75Y/s0/ft-prefix-term.png)
@@ -95,16 +95,16 @@ SELECT \* FROM Documents WHERE CONTAINS(Content, '"市\*"')
 - THESAURUS：使用指定語系的同義字定義檔以查詢同義字。
 ```sql
 --return 市長 or 巿長
-SELECT \* FROM Documents WHERE CONTAINS(Content, 'FORMSOF(THESAURUS,"市長")')  
+SELECT * FROM Documents WHERE CONTAINS(Content, 'FORMSOF(THESAURUS,"市長")')  
 ```
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9AQarTKnPCLYYv7pm-Sr5c3SRlDD3yqmAL1zwybyIm5y4HBOPqjaO5nfB0N77HVeVjnbqZwhOai1TkB1tdC7u_Kn6tgJuctOmRtdhcji2ekoD9jAKFLLMhd2CVx_j7U-DvaTFWqGeQAY/s0/ft-using-thesaurus.png)
 ```sql
 --only return ride
-SELECT \* FROM Documents WHERE CONTAINS(Content, 'FORMSOF(INFLECTIONAL,"ride")') 
+SELECT * FROM Documents WHERE CONTAINS(Content, 'FORMSOF(INFLECTIONAL,"ride")') 
 
 --return ride, riding, rode
-SELECT \* FROM Documents WHERE CONTAINS(Content, 'FORMSOF(INFLECTIONAL,"ride")', LANGUAGE N'English')  
+SELECT * FROM Documents WHERE CONTAINS(Content, 'FORMSOF(INFLECTIONAL,"ride")', LANGUAGE N'English')  
 ```
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxUIXiLsg84Xv3Sr0z6jka68Fi8cquw7onKCsOb8Ve5zXyBWkrf5mkzhvoYIwMRfb_LymHUQvZyeMg3gX57BjyC_4mqU12e3kBCfEuUsxIIirxmCsjOrTOeQzTxgmgzwhmHzkvjb1_AwM/s0/ft-using-inflection.png)
@@ -120,7 +120,7 @@ SELECT \* FROM Documents WHERE CONTAINS(Content, 'FORMSOF(INFLECTIONAL,"ride")',
 } [ ...n ] 
 ```
 ```sql
-SELECT \* FROM Documents WHERE CONTAINS(Content,'市長 NEAR 琨')
+SELECT * FROM Documents WHERE CONTAINS(Content,'市長 NEAR 琨')
 ```
 
 ## 加權項目（Weighted Term）
@@ -133,7 +133,7 @@ SELECT \* FROM Documents WHERE CONTAINS(Content,'市長 NEAR 琨')
 
 加權值若只用在 [CONTAINS](http://msdn.microsoft.com/zh-tw/library/ms187787.aspx) ，不會影響查詢的結果
 ```sql
-SELECT \* FROM Documents
+SELECT * FROM Documents
 WHERE CONTAINS(Content, 
 'ISABOUT ( 花蓮 weight (.8), 市長 weight (.4), 傅 weight (.2) )' 
 );
@@ -143,7 +143,7 @@ WHERE CONTAINS(Content,
 
 加權值若用在 [CONTAINSTABLE](http://msdn.microsoft.com/zh-tw/library/ms189760.aspx) ，則會產生不同的 Ranking 值
 ```sql
-SELECT A.\*,B.\* FROM Documents as A
+SELECT A.*,B.* FROM Documents as A
 INNER join CONTAINSTABLE(Documents, Content, 
 'ISABOUT ( 花蓮 weight (.8), 市長 weight (.4), 傅 weight (.2) )' 
 ) as B ON A.DID=B.[Key]
@@ -156,9 +156,9 @@ ORDER BY B.RANK DESC
 
 指定兩個包含搜尋條件之間的邏輯運算。共有三種運算式 { AND | AND NOT | OR }，也可以用符號表示 { & | &! | | }
 ```sql
-SELECT \* FROM Documents WHERE CONTAINS(Content,'市長 AND 高雄')
-SELECT \* FROM Documents WHERE CONTAINS(Content,'市長 OR 高雄')
-SELECT \* FROM Documents WHERE CONTAINS(Content,'市長 &! 高雄')
+SELECT * FROM Documents WHERE CONTAINS(Content,'市長 AND 高雄')
+SELECT * FROM Documents WHERE CONTAINS(Content,'市長 OR 高雄')
+SELECT * FROM Documents WHERE CONTAINS(Content,'市長 &! 高雄')
 ```
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFLVo1UXfEL1b0sNoneKsiGuCko0MCItp-RkjSYCbmySvjbdj2Efoxbob3lFrlX3opJpxa4ThqjHfougSTBVagRiYr7Oj6EokcmSmStAoBiLYMldNoC-BCCP7XWAAHOGF5m5kOqNrI3Rg/s0/ft-logical-operation.png)
@@ -181,7 +181,7 @@ CONTAINSTABLE  ( table , <InludedColumns>, <SearchCondition> [,language_term] [,
 
 #### 例一：傳回等級值
 ```sql
-SELECT \* FROM Documents as A
+SELECT * FROM Documents as A
 INNER join CONTAINSTABLE(
 Documents, 
 Content, 
@@ -194,7 +194,7 @@ ORDER BY B.RANK DESC
 
 #### 例二：傳回大於指定值的等級值
 ```sql
-SELECT \* FROM Documents as A
+SELECT * FROM Documents as A
 INNER join CONTAINSTABLE(
 Documents, 
 Content, 
@@ -208,7 +208,7 @@ ORDER BY B.RANK DESC
 
 #### 例三：利用 top\_n\_by\_rank 傳回前 2 個等級的結果
 ```sql
-SELECT \* FROM Documents as A
+SELECT * FROM Documents as A
 INNER join CONTAINSTABLE(
 Documents, 
 Content, 
@@ -239,7 +239,7 @@ FREETEXT ( <InludedColumns>, 'freetext_string' [,language_term] )
 - 尋找＂花蓮＂和＂市長＂的其他詞態字
 - 再依據同義字定義檔中的定義，展開或取代＂花蓮＂和＂市長＂。
 ```sql
-SELECT \* FROM Documents 
+SELECT * FROM Documents 
 WHERE FREETEXT(Content, '花蓮市長')
 ```
 
@@ -254,7 +254,7 @@ WHERE FREETEXT(Content, '花蓮市長')
 FREETEXTTABLE  ( table, <InludedColumns>, 'freetext_string' [,language_term] [,top_n_by_rank]  )
 ```
 ```sql
-SELECT \* FROM Documents as A
+SELECT * FROM Documents as A
 INNER join FREETEXTTABLE(
 Documents, 
 Content, 
