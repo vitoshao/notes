@@ -1,7 +1,7 @@
 ---
 title: MISC
-nav_order: 8
-child_nav_order: 'desc'
-icon: <i class="fa-solid fa-screwdriver-wrench"></i>
+layout: default
+parent: 
+date: 2012-03-08
 ---
-# MISC
+# 軟體操作
