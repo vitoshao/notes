@@ -1,9 +1,18 @@
 
+{: .warning}
+>1.	請自行購買平險或旅遊不便險
+>2.	出發兩週前，請務必透過印尼移民總局官方電子簽證系統，申請電子落地簽證，費用為 500,000 印尼盾。
+>3.	不論有無辦理簽證，所有旅客皆須在抵達前3日內，於印尼 All Indonesia 入境整合系統 填報電子入境卡。
+
 ## 機票
+- 9/19(六) 23:50 (TPE)桃園國際機場 T1 => 04:15 (SIN)樟宜機場 T1
+- 9/20(日) 07:50 (SIN)樟宜機場 T2 => 09:10 (SUB)泗水朱安達國際機場
+- 9/25(五) 15:30 (SUB)泗水朱安達國際機場 => 18:00  (LBJ) 科莫多機場
+
 
 ## 住宿
-| 日期  | 飯店名稱    | 備註  |     |
-| --- | ------- | --- | --- |
+|天數|日期|飯店|備註|
+ |---- | ---- | ---- | ---- |
 | D1  | 9/20(日) |Tumpak Sewu|     |
 | D2  | 9/21(一) |Bondowoso|     |
 | D3  | 9/22(二) |Bromo|     |
@@ -11,17 +20,105 @@
 | D5  | 9/24(四) |Fairfield by Marriott Surabaya|     |
 | D6  | 9/25(五) |Komodo Lodge|     |
 | D7  | 9/26(六) |Katamaran Hotel & Resort Komodo|     |
-| D8  | 9/27(日) |<a target="_blank" href="https://www.google.com/maps/place/Hmlet+Essentials+Kallang/@1.311064,103.8712121,17z/data=!4m15!1m2!2m1!1sHmlet+Essention+Kallang!3m11!1s0x31da183420742105:0xe72057f7a7f664d3!5m3!1s2026-09-27!4m1!1i2!8m2!3d1.311064!4d103.873787!15sChdIbWxldCBFc3NlbnRpb24gS2FsbGFuZ5IBD3ZhY2F0aW9uX3JlbnRhbOABAA!16s%2Fg%2F11zh4wn87d!17BQ0FF?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D">Hmlet Essention Kallang</a>|115 Geylang Road|
-| D9  | 9/28(一) |<a target="_blank" href="https://www.google.com/maps/place/Hmlet+Essentials+Kallang/@1.311064,103.8712121,17z/data=!4m15!1m2!2m1!1sHmlet+Essention+Kallang!3m11!1s0x31da183420742105:0xe72057f7a7f664d3!5m3!1s2026-09-27!4m1!1i2!8m2!3d1.311064!4d103.873787!15sChdIbWxldCBFc3NlbnRpb24gS2FsbGFuZ5IBD3ZhY2F0aW9uX3JlbnRhbOABAA!16s%2Fg%2F11zh4wn87d!17BQ0FF?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D">Hmlet Essention Kallang</a>|+65 9478 5513|
-| D10 | 9/29(二) |<a target="_blank" href="https://www.google.com/maps/place/Hmlet+Essentials+Kallang/@1.311064,103.8712121,17z/data=!4m15!1m2!2m1!1sHmlet+Essention+Kallang!3m11!1s0x31da183420742105:0xe72057f7a7f664d3!5m3!1s2026-09-27!4m1!1i2!8m2!3d1.311064!4d103.873787!15sChdIbWxldCBFc3NlbnRpb24gS2FsbGFuZ5IBD3ZhY2F0aW9uX3JlbnRhbOABAA!16s%2Fg%2F11zh4wn87d!17BQ0FF?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D">Hmlet Essention Kallang</a>|06:00-11:00 15:00:23:00|
 
 
 ## 預計行程
 
+{: .highlight }
+>### D1: 9/20(日) 台灣 => 新加坡 => 泗水
 
-D1: 9/28(一) 牛車水、魚尾獅、濱海公園、老巴剎
+搭車前往賽武瀑布地區(Tumpak Sewu)，車程4個小時。
 
-D2: 9/29(二) 小印度區、阿拉伯區、福康寧公園、克拉碼頭
+
+{: .highlight }
+>### D2: 9/21(一) 塞梅魯火山 & 賽武瀑布
+
+- 05:00　前往 Teras Semeru (塞梅魯露台) 欣賞 Semeru 火山美景並拍照
+- 05:30　抵達 Teras Semeru
+- 06:30　前往 Panorama Kapas Biru 景觀點 
+- 06:50　抵達，拍照留念 
+- 07:30　早餐 
+- 08:00　前往 Tumpak Sewu 瀑布停車場 
+- 08:30　開始探索 Tumpak Sewu 瀑布 
+- 11:30　結束瀑布行程，盥洗整理 
+- 12:00　午餐 
+- 13:00　出發前往 Bondowoso（邦多沃索縣, Ijen地區） 
+- 17:30　抵達 Bondowoso 
+- 18:00　入住飯店，休息 
+- 夜宿 Bondowoso 
+
+
+{: .highlight }
+>### D3: 9/22(二) 伊真火山 (Ijen)
+
+- 23:30　辦理退房 
+- 00:00　由飯店接送，前往 Paltuding（Ijen 登山口） 
+- 01:40　抵達 Ijen 停車場 
+- 02:00　開始攀登 Ijen 火山 
+- 04:30　抵達火山口，欣賞藍火（Blue Fire）與日出（視天候而定） 
+- 07:30　結束健行（時間可彈性調整） 
+- 08:00　搭車前往 Bromo 地區 
+- 13:00　途中享用午餐 
+- 16:30～17:00　抵達 Bromo 地區 
+- 17:00　入住飯店，休息 
+- 夜宿 Bromo 	
+
+{: .highlight }
+>### D4: 9/23(三) 布羅莫火山群 (BROMO) & 馬達卡里普拉瀑布 (Madakaripura)	
+
+- 02:00　搭乘四輪傳動 Jeep 展開 Bromo 日出之旅 
+- 02:40　抵達觀景台停車場 
+- 02:55　咖啡休息時間 
+- 04:10　步行前往觀景點 
+- 04:25　欣賞日出及 Bromo 火山群壯麗景色 
+- 06:15　返回 Jeep（時間可彈性調整） 
+- 06:30　前往「沙海（Sea of Sand）」拍照 
+- 07:20　前往 Bromo 火山口停車場 
+- 07:35　步行前往火山口（可自費騎馬） 
+- 08:10　參觀 Bromo 火山口 
+- 08:30　返回 Jeep 
+- 09:00　回飯店 
+- 09:30　早餐 
+- 11:30　前往 Madakaripura 瀑布 
+- 12:30　探索 Madakaripura 瀑布 
+- 15:00　搭車返回泗水 
+- 17:30　入住泗水飯店，休息
+
+
+{: .highlight }
+>### D5: 9/24(四) 自由活動
+- 飯店早餐 
+- 辦理退房 
+- 專車送往朱安達國際機場 
+- 行程結束 
+- 補眠，洗衣服，按摩，逛商場，吃美食，市區觀光，動物園，泡飯店….
+- 宿 Fairfield by Marriott Surabaya	(萬豪費爾菲爾德酒店)
+
+{: .highlight }
+>### D6: 9/25(五) 自由活動
+
+- 補眠，洗衣服，按摩，逛商場，吃美食，市區觀光，動物園，泡飯店….
+- 15:30 SUB泗水朱安達國際機場-> 18:00 LBJ科莫多機場
+- 宿Komodo Lodge	(科莫多小屋)
+- 
+{: .highlight }
+>### D7: 9/26(六) 科摩多島(Komodo Island)
+
+- 08:00 帕達爾島(1小時30分鐘導覽)
+- 10:00 粉紅海灘(1小時導覽)
+- 11:20 科莫多島(1小時導覽)
+- 12:30 午餐
+- 13:00 塔卡馬卡薩島(45分鐘導覽)
+- 14:00 曼塔角(45分鐘導覽)
+- 15:00 龜點(45分鐘導覽)
+- 16:00 回程
+- 宿 Katamaran Hotel & Resort Komodo 	(卡塔馬蘭飯店)
+
+
+{: .highlight }
+>### D7: 9/27(日) 自由活動 => 回家
+
+- 19:40-23:15 下拉布安(科莫多機場) - 新加坡(樟宜機場)
 
 
 
