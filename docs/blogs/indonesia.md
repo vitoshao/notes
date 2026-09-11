@@ -1,3 +1,9 @@
+---
+title: 東爪哇海陸探險趣
+layout: default
+description: "東爪哇海陸探險趣"
+date: 2026-9-11
+---
 
 {: .warning}
 >1.	請自行購買平險或旅遊不便險
