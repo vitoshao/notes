@@ -48,15 +48,15 @@ date: 2026-9-11
 <table>
 	<tr>
 		<td>林志源肉乾</td>
-		<td><img src='./林志源肉乾.jpg' /></td>
+		<td><img src='./images/林志源肉乾.jpg' /></td>
 	</tr>
 	<tr>
 		<td>詹美回教堂</td>
-		<td><img src='./詹美回教堂.jpg' /></td>
+		<td><img src='./images/詹美回教堂.jpg' /></td>
 	</tr>
 	<tr>
 		<td>馬里安曼廟</td>
-		<td><img src='./馬里安曼廟.jpg' /></td>
+		<td><img src='./images/馬里安曼廟.jpg' /></td>
 	</tr>
 	<tr>
 		<td>佛牙寺龍華院</td>
@@ -64,11 +64,11 @@ date: 2026-9-11
 	</tr>
 	<tr>
 		<td>麥士威熟食中心</td>
-		<td>![麥士威熟食中心](images/麥士威熟食中心.png)</td>
+		<td>![麥士威熟食中心](./images/麥士威熟食中心.png)</td>
 	</tr>
 	<tr>
 		<td>天天海南雞飯</td>
-		<td>![天天海南雞飯](images/天天海南雞飯.png)</td>
+		<td>![天天海南雞飯](./images/天天海南雞飯.png)</td>
 	</tr>
 	<tr>
 		<td>天福宮</td>
@@ -95,11 +95,40 @@ date: 2026-9-11
 
 <table>
 	<th>
-		<td>林志源肉乾</td>
-		<td>詹美回教堂</td>
-		<td>馬里安曼廟</td>
-		<td>佛牙寺龍華院</td>
-		<td>天天海南雞飯</td>
+		<td></td>
+		<td></td>
+	</th>
+	<th>
+		<td></td>
+		<td></td>
+	</th>
+	<th>
+		<td></td>
+		<td></td>
+	</th>
+	<th>
+		<td></td>
+		<td></td>
+	</th>
+	<th>
+		<td></td>
+		<td></td>
+	</th>
+	<th>
+		<td></td>
+		<td></td>
+	</th>
+	<th>
+		<td></td>
+		<td></td>
+	</th>
+	<th>
+		<td></td>
+		<td></td>
+	</th>
+	<th>
+		<td></td>
+		<td></td>
 	</th>
 </table>
 
