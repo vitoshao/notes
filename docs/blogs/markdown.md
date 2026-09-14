@@ -223,8 +223,8 @@ public class Teacher
 <summary>Shopping list (click me!)</summary>
 This is content inside a `<details>` dropdown.
 - [x] Apples
-- [ ] Oranges
-- [ ] Milk
+^- [ ] Oranges
+- [ ] Milk^
 </details>
 
 ## label

@@ -7,32 +7,39 @@ date: 2026-9-11
 
 {: .warning-title}
 >注意事項
->1.	請自行購買平險或旅遊不便險
+>1.	請自行購買旅斿平安險或旅遊不便險
 >2.	出發兩週前，請務必透過<a href='https://evisa.imigrasi.go.id/' target='_blank'>印尼移民總局官方電子簽證系統</a>，申請電子落地簽證，費用為 500,000 印尼盾。
 >3.	不論有無辦理簽證，所有旅客皆須在抵達前3日內，於<a href='https://allindonesia.id/' target='_blank'>印尼 All Indonesia 入境整合系統</a> 填報電子入境卡。
 
 ## 機票
 
-| 日期      | 起飛機場               | 抵達機場               | 航班                  | 費用    | 備註  |
+| 日期      | 起飛機場               | 抵達機場               | 航班                  | 備註  |
 | ------- | ------------------ | ------------------ | ------------------- | ----- | --- |
-| 9/19(六) | 23:50 (TPE) 台北 T1  | 04:15 (SIN) 新加坡 T1 | 新加坡航空 SQ8385        | $9060 |     |
-| 9/25(五) | 15:30 (SUB) 泗水     | 18:00 (LBJ) 下拉布安   | Super Air Jet IU726 | $7867 |     |
-| 9/27(日) | 19:40 (LBJ) 下拉布安   | 23:05 (SIN) 新加坡 T1 | 酷航 TR291            | $7826 |     |
-| 9/20(日) | 07:50 (SIN) 新加坡 T2 | 09:10 (SUB) 泗水 T2  | 新加坡航空 SQ922         | $3607 |     |
+| 9/19(六) | 23:50 (TPE) 台北 T1  | 04:15 (SIN) 新加坡 T1 | 新加坡航空 SQ8385        |    |
+| 9/25(五) | 15:30 (SUB) 泗水     | 18:00 (LBJ) 下拉布安   | Super Air Jet IU726 |    |
+| 9/27(日) | 19:40 (LBJ) 下拉布安   | 23:05 (SIN) 新加坡 T1 | 酷航 TR291            |    |
+| 9/20(日) | 07:50 (SIN) 新加坡 T2 | 09:10 (SUB) 泗水 T2  | 新加坡航空 SQ922         |    |
 
 ## 住宿
 
-| 天數  | 日期      | 飯店                              | 費用  | 備註  |
-| --- | ------- | ------------------------------- | --- | --- |
-| D1  | 9/20(日) | Tumpak Sewu                     |$6300|     |
-| D2  | 9/21(一) | Bondowoso                       |     |     |
-| D3  | 9/22(二) | Bromo                           |     |     |
-| D4  | 9/23(三) | Surabaya                        |     |     |
-| D5  | 9/24(四) | Fairfield by Marriott Surabaya  |$1091|     |
-| D6  | 9/25(五) | Komodo Lodge                    |$633 |     |
-| D7  | 9/26(六) | Katamaran Hotel & Resort Komodo |$5148|     |
+| 天數  | 日期      | 飯店                              | 備註  |
+| --- | ------- | ------------------------------- | --- |
+| D1  | 9/20(日) | Tumpak Sewu                     |     |
+| D2  | 9/21(一) | Bondowoso                       |     |
+| D3  | 9/22(二) | Bromo                           |     |
+| D4  | 9/23(三) | Surabaya                        |     |
+| D5  | 9/24(四) | Fairfield by Marriott Surabaya  |     |
+| D6  | 9/25(五) | Komodo Lodge                    |     |
+| D7  | 9/26(六) | Katamaran Hotel & Resort Komodo |     |
+
+## Bromo Taxi
+- [https://www.facebook.com/bromoijentourtransport](https://www.facebook.com/bromoijentourtransport)
+- [https://www.instagram.com/bromo_taxi](https://www.instagram.com/bromo_taxi)
+
 
 ## 預計行程
+
+<a target="_blank" href="https://www.google.com/maps/d/u/0/edit?hl=zh-TW&mid=1500EQPAFd5EwgOvuXk6xwUAw9wq4Hxk&ll=-7.486363207089822%2C113.95814517274218&z=8">Google 地圖</a>
 
 {: .note-title}
 > D1：9/20(日) 台灣 => 新加坡 => 泗水
