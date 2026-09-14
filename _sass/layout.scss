@@ -65,13 +65,13 @@
 }
 
 .main-content-wrap {
-  padding-top: $gutter-spacing-sm;
+  padding-top: 0;
   padding-bottom: $gutter-spacing-sm;
 
   @include container;
 
   @include mq(md) {
-    padding-top: $gutter-spacing;
+    padding-top: 0;
     padding-bottom: $gutter-spacing;
   }
 }

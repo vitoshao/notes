@@ -177,22 +177,22 @@ public class Teacher
 ### **自訂標題的註解**
 
 {: .note-title}
->My Note
+>Note Title
 >
 >這是一段有特殊樣式的註解，可以用來`強調重點`。
 
 {: .warning-title}
->My Warning
+>Note Title
 >
 >這是一段有特殊樣式的註解，可以用來`警告使用者`。
 
 {: .important-title}
->My Important
+>Note Title
 >
 >這是一段有特殊樣式的註解，可以用來`強調重要性`。
 
 {: .highlight-title}
->My Heighligh
+>Note Title
 >
 >這是一段有特殊樣式的註解，沒有`TITLE`
 
