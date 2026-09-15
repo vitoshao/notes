@@ -9,7 +9,7 @@ date: 2026-9-11
 >注意事項
 >1.	請自行購買旅斿平安險或旅遊不便險
 >2.	出發兩週前，請務必透過<a href='https://evisa.imigrasi.go.id/' target='_blank'>印尼移民總局官方電子簽證系統</a>，申請電子落地簽證，費用為 500,000 印尼盾。
->3.	不論有無辦理簽證，所有旅客皆須在抵達前3日內，於<a href='https://allindonesia.id/' target='_blank'>印尼 All Indonesia 入境整合系統</a> 填報電子入境卡。
+>3.	不論有無辦理簽證，所有旅客皆須在抵達前3日內，於<a href='https://allindonesia.imigrasi.go.id/' target='_blank'>印尼 All Indonesia 入境整合系統</a> 填報電子入境卡。
 
 ## 機票
 
